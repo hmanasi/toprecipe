@@ -4,7 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages={"com.toprecipe.controllers","com.toprecipe.services"})
+@ComponentScan(basePackages={"com.toprecipe.controllers","com.toprecipe.services","com.toprecipe.repository"})
 public class AppConfig {
 	
 	public AppConfig()

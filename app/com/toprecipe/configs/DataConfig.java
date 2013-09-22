@@ -17,7 +17,6 @@ import play.Play;
 @Configuration
 public class DataConfig {
 
-	
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory());
@@ -32,7 +31,7 @@ public class DataConfig {
         vendorAdapter.setShowSql(true);
         vendorAdapter.setGenerateDdl(true);
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactory.setPackagesToScan("models");
+        entityManagerFactory.setPackagesToScan("com.toprecipe.models");
         entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
         entityManagerFactory.setDataSource(dataSource());
         entityManagerFactory.afterPropertiesSet();
