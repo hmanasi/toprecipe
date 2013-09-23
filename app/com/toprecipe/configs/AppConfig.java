@@ -8,17 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
-import org.springframework.context.annotation.EnableLoadTimeWeaving.AspectJWeaving;
-import org.springframework.context.annotation.LoadTimeWeavingConfigurer;
-import org.springframework.instrument.classloading.LoadTimeWeaver;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
 
 @Configuration
 @ComponentScan(basePackages = { "com.toprecipe.controllers",
 		"com.toprecipe.services", "com.toprecipe.repository" })
 @EnableAspectJAutoProxy
-@EnableLoadTimeWeaving(aspectjWeaving=AspectJWeaving.ENABLED)
 public class AppConfig {
 	@Bean
 	public CustomizableTraceInterceptor interceptor() {
@@ -39,10 +34,9 @@ public class AppConfig {
 
 		return new DefaultPointcutAdvisor(pointcut, interceptor());
 	}
-	
+
 	@Bean
-	public HibernateExceptionTranslator exceptionTranslator ()
-	{
-		return new HibernateExceptionTranslator ();
+	public HibernateExceptionTranslator exceptionTranslator() {
+		return new HibernateExceptionTranslator();
 	}
 }
