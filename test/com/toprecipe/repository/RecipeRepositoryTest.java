@@ -16,10 +16,14 @@ public class RecipeRepositoryTest extends AbstractContainerTest {
 	@Test
 	public void test() {
 		Recipe r = new Recipe();
-		r.setTitle("Test Title");
-		repository.save(r);
-
+		r.setTitle("JPA repository recipe");
+		
+		r = repository.save(r);
 		assertNotNull(r.getId());
+
+		r = repository.findOne(r.getId());
+
+		assertEquals("JPA repository recipe", r.getTitle());
 	}
 
 }

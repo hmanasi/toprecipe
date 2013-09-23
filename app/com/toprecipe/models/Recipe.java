@@ -12,11 +12,11 @@ public class Recipe {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Recipe_Seq_Gen")
-	private Integer id;
+	private Long id;
 
 	private String title;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 

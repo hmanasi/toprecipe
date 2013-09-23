@@ -14,8 +14,11 @@ libraryDependencies ++= Seq(
   "org.springframework" % "spring-jdbc" % "3.2.4.RELEASE",  
   "org.springframework" % "spring-expression" % "3.2.4.RELEASE",
   "org.springframework" % "spring-tx" % "3.2.4.RELEASE",
+  "org.springframework" % "spring-instrument" % "3.2.4.RELEASE",
   "org.springframework" % "spring-test" % "3.2.4.RELEASE" % "test",
   "org.hibernate" % "hibernate-entitymanager" % "4.2.5.Final",
+  "org.springframework.data" % "spring-data-jpa" % "1.4.1.RELEASE",
+  "org.aspectj" % "aspectjweaver" % "1.7.2",
   "cglib" % "cglib" % "2.2.2"
 )
 
