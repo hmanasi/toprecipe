@@ -1,7 +1,32 @@
-@(message: String)
+@(recipes: Iterable[com.toprecipe.models.Recipe], recipeForm: Form[com.toprecipe.models.Recipe])
 
-@main("Welcome to Play") {
+@import helper._
+@import com.toprecipe.models.Recipe
 
-    @play20.welcome(message, style = "Java")
-
+@main("Recipe list") {
+    
+    <ul>
+        @for(recipe <- recipes.iterator()) {
+            <li>
+                @recipe.getTitle()
+                
+                @form(com.toprecipe.controllers.routes.Application.deleteRecipe(recipe.getId())) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+    
+    <h2>Add a new Recipe</h2>
+    
+    @form(com.toprecipe.controllers.routes.Application.newRecipe()) {
+        
+        @inputText(recipeForm("title")) 
+        
+        <input type="submit" value="Create">
+        
+    }
+    
 }
+
+

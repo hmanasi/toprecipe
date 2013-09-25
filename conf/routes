@@ -5,5 +5,12 @@
 # Home page
 GET     /                           @com.toprecipe.controllers.Application.index()
 
+# Recipes          
+GET     /recipes                  @com.toprecipe.controllers.Application.recipes()
+POST    /recipes                  @com.toprecipe.controllers.Application.newRecipe()
+POST    /recipes/:id/delete       @com.toprecipe.controllers.Application.deleteRecipe(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+

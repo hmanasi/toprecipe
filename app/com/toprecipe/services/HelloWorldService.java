@@ -12,7 +12,7 @@ public class HelloWorldService {
 
 	public String hellowWorld ()
 	{
-		return "Hello world with spring!";
+		return "Hello world with Spring!";
 	}
 	
 }
