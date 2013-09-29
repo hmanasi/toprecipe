@@ -6,11 +6,16 @@
 GET     /                           @com.toprecipe.controllers.Application.index()
 
 # Recipes          
-GET     /recipes                  @com.toprecipe.controllers.Application.recipes()
-POST    /recipes                  @com.toprecipe.controllers.Application.newRecipe()
-POST    /recipes/:id/delete       @com.toprecipe.controllers.Application.deleteRecipe(id: Long)
+GET     /recipes                  @com.toprecipe.controllers.Recipes.recipes()
+GET     /recipes/new              @com.toprecipe.controllers.Recipes.newRecipe()
+POST    /recipes                  @com.toprecipe.controllers.Recipes.createRecipe()
+POST    /recipes/:id              @com.toprecipe.controllers.Recipes.editRecipe(id: Long)
+POST    /recipes/:id/delete       @com.toprecipe.controllers.Recipes.deleteRecipe(id: Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
+GET     /assets/img/glyphicons-halflings-white.png      controllers.Assets.at(path="/public", file="/images/glyphicons-halflings-white.png")
+GET     /assets/img/glyphicons-halflings.png            controllers.Assets.at(path="/public", file="/images/glyphicons-halflings.png")
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 

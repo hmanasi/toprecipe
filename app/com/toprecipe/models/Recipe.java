@@ -19,8 +19,10 @@ public class Recipe {
 	@Required
 	private String title;
 	
+	private String image;
+
 	private String videoUrl;
-	
+
 	private String sourceUrl;
 
 	public Long getId() {
@@ -49,5 +51,13 @@ public class Recipe {
 
 	public void setSourceUrl(String sourceUrl) {
 		this.sourceUrl = sourceUrl;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

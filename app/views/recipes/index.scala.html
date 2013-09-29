@@ -1,0 +1,32 @@
+@(recipes: Iterable[com.toprecipe.models.Recipe])
+
+@import helper._
+@import com.toprecipe.models.Recipe
+
+@main("Recipe list") {
+    
+    <ul class="thumbnails">
+        @for(recipe <- recipes.iterator()) {
+            <li class="span4">
+            	<div class="thumbnail">
+            		<img data-src="holder.js/300x200" alt="">
+                <h3>@recipe.getTitle()</h3>
+                
+                <p>@recipe.getVideoUrl()
+                
+                @form(com.toprecipe.controllers.routes.Recipes.deleteRecipe(recipe.getId())) {
+                    <input type="submit" value="Delete">
+                }
+                
+                @form(com.toprecipe.controllers.routes.Recipes.editRecipe(recipe.getId())) {
+                    <input type="submit" value="Edit">
+                }
+                
+                
+                </p>
+                </div>
+            </li> 
+        }
+    </ul>
+    
+    }
