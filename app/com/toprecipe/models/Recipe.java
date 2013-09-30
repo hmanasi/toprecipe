@@ -1,9 +1,12 @@
 package com.toprecipe.models;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import play.data.validation.Constraints.Required;
@@ -18,12 +21,15 @@ public class Recipe {
 
 	@Required
 	private String title;
-	
+
 	private String image;
 
 	private String videoUrl;
 
 	private String sourceUrl;
+
+	@ManyToOne
+	private FoodItem foodItem;
 
 	public Long getId() {
 		return id;

@@ -8,6 +8,6 @@ import com.toprecipe.configs.AppConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class, TestDataConfig.class })
-public abstract class AbstractContainerTest { //extends AbstractTransactionalJUnit4SpringContextTests {
+public abstract class AbstractContainerTest {
 
 }
