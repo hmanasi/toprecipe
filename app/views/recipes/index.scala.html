@@ -9,7 +9,9 @@
         @for(recipe <- recipes.iterator()) {
             <li class="span4">
             	<div class="thumbnail">
-            		<img data-src="holder.js/300x200" alt="">
+            	
+            	<img src="@routes.Assets.at(recipe.getImage())" alt="300x200" class="img-thumbnail">
+            		
                 <h3>@recipe.getTitle()</h3>
                 
                 <p>@recipe.getVideoUrl()

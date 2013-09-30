@@ -29,6 +29,10 @@ public class Recipe {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -60,4 +64,5 @@ public class Recipe {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
 }

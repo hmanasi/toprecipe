@@ -1,20 +1,20 @@
-@(recipeForm: Form[com.toprecipe.models.Recipe])
+@(recipeId: Long, recipeForm: Form[com.toprecipe.models.Recipe])
 
 @import helper._
 @import helper.twitterBootstrap._
 @import com.toprecipe.models.Recipe
 
-@main("Create Recipe") {
+@main("Update Recipe") {
       
-    <h2>Add a new Recipe</h2>
+    <h2>Update Recipe</h2>
     
    
-      @form(com.toprecipe.controllers.routes.Recipes.createRecipe()) {
+      @form(com.toprecipe.controllers.routes.Recipes.updateRecipe(recipeId)) {
         @inputText(recipeForm("title"))
         @inputText(recipeForm("image"))
         @inputText(recipeForm("videoUrl"))
         @inputText(recipeForm("sourceUrl"))
-        <input type="submit" value="Create">
+        <input type="submit" value="Update">
     }  
     
     @form(com.toprecipe.controllers.routes.Recipes.recipes()) {
@@ -22,5 +22,3 @@
        <input type="submit" value="View Recipes">
     }
 }
-
-
