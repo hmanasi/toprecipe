@@ -53,7 +53,7 @@ public class Recipes extends Controller {
 			Recipe recipe = filledForm.get();
 			recipe.setId (id);
 			repo.save(recipe);
-			return ok(views.html.recipes.update.render(id, recipeForm));
+			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 		}
 
 	}
