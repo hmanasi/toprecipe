@@ -76,4 +76,9 @@ public class Category {
 	public void setParentCategory(Category parent) {
 		this.parent = parent;
 	}
+	
+	public void addFoodItem (FoodItem foodItem)
+	{
+		foodItems.add(foodItem);
+	}
 }

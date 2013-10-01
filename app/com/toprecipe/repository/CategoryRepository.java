@@ -4,6 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.toprecipe.models.Category;
 
-public interface CategoryRepository extends CrudRepository<Category, Long>{
-	public Category findByTitle (String title);
+public interface CategoryRepository extends CrudRepository<Category, Long> {
+	public Category findByTitle(String title);
+
+	public Category findByTitleAndParent(String title, Category parent);
 }
