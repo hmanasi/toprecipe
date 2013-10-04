@@ -3,32 +3,37 @@
 @import helper._
 @import com.toprecipe.models.Recipe
 
-@main("Recipe list") {
-    
-    <ul class="thumbnails">
+@scripts = {
+    <script src="@routes.Assets.at("javascripts/recipes/index.js")" type="text/javascript"></script>
+}
+
+@main("Recipe list", scripts){
+  	<div class="row">
         @for(recipe <- recipes.iterator()) {
-            <li class="span4">
+  			<div class="col-sm-6 col-md-3">
             	<div class="thumbnail">
             	
             	<img src="@routes.Assets.at(recipe.getImage())" alt="300x200" class="img-thumbnail">
             		
                 <h3>@recipe.getTitle()</h3>
                 
-                <p>@recipe.getVideoUrl()
+                @recipe.getVideoUrl()
                 
-                @form(com.toprecipe.controllers.routes.Recipes.deleteRecipe(recipe.getId())) {
-                    <input type="submit" value="Delete">
-                }
-                
-                @form(com.toprecipe.controllers.routes.Recipes.editRecipe(recipe.getId())) {
-                    <input type="submit" value="Edit">
-                }
-                
-                
-                </p>
-                </div>
-            </li> 
+                	<div class="input-group">
+	                	<span class="input-group-btn">
+    	                	<button class="btn btn-default" type="button" name="delete-button" recipeId="@recipe.getId()">Delete</button>
+                        	<button class="btn btn-default" type="button" name="edit-button" recipeId="@recipe.getId()">Edit</button>
+        	        	</span>
+                	</div>
+             	</div>
+		  	</div>
+		  
+		  	<div>
+			  @form(com.toprecipe.controllers.routes.Recipes.deleteRecipe(recipe.getId()), 'id -> String.format ("deleteForm-%d", recipe.getId())){
+			  }
+			  @form(com.toprecipe.controllers.routes.Recipes.editRecipe(recipe.getId()), 'id -> String.format ("editForm-%d", recipe.getId())){
+			  }
+		  	</div>
         }
-    </ul>
-    
-    }
+	</div>
+}

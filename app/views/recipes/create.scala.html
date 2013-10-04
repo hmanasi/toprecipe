@@ -6,20 +6,20 @@
 
 @main("Create Recipe") {
       
-    <h2>Add a new Recipe</h2>
+    <h2 class="form-signin-heading">Add new recipe</h2>
     
    
       @form(com.toprecipe.controllers.routes.Recipes.createRecipe()) {
-        @inputText(recipeForm("title"))
-        @inputText(recipeForm("image"))
-        @inputText(recipeForm("videoUrl"))
-        @inputText(recipeForm("sourceUrl"))
-        <input type="submit" value="Create">
+        @inputText(recipeForm("Title"), 'class -> "form-control", 'placeholder -> "Title")
+        @inputText(recipeForm(""), 'class -> "form-control", 'placeholder -> "Image")
+        @inputText(recipeForm(""), 'class -> "form-control", 'placeholder -> "Video url")
+        @inputText(recipeForm(""), 'class -> "form-control", 'placeholder -> "Source url")
+        <button class="btn btn-lg btn-primary" type="submit">Create</button>
     }  
     
     @form(com.toprecipe.controllers.routes.Recipes.recipes()) {
         
-       <input type="submit" value="View Recipes">
+       <button class="btn btn-lg btn-primary" type="submit">View recipes</button>
     }
 }
 
