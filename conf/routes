@@ -18,6 +18,10 @@ GET     /admin/importCategories   @com.toprecipe.controllers.Admin.importCategor
 GET     /admin/importFoodItems    @com.toprecipe.controllers.Admin.importFoodItems()
 GET     /admin/importRecipes      @com.toprecipe.controllers.Admin.importRecipes()
 
+#Category>food item
+GET     /categories/:category_id/fooditems    @com.toprecipe.controllers.CategoryBrowser.foodItems(id: Long)
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/img/glyphicons-halflings-white.png      controllers.Assets.at(path="/public", file="/images/glyphicons-halflings-white.png")
 GET     /assets/img/glyphicons-halflings.png            controllers.Assets.at(path="/public", file="/images/glyphicons-halflings.png")
