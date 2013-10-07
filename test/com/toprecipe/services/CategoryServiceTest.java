@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
@@ -18,51 +19,26 @@ import com.toprecipe.repository.CategoryRepository;
 import com.toprecipie.config.AbstractContainerTest;
 
 public class CategoryServiceTest extends AbstractContainerTest {
-
+	
+	@Autowired
+	private PlatformTransactionManager transactionManager;
+	private TransactionTemplate transactionTemplate;
+	
 	@Autowired
 	private CategoryService inTest;
 	@Autowired
 	private CategoryRepository repository;
-	@Autowired
-	private PlatformTransactionManager transactionManager;
 
-	private TransactionTemplate transactionTemplate;
-
+	@After
+	public void deleteCategories() {
+		repository.deleteAll();
+	}
+	
 	@Before
 	public void setup() {
 		transactionTemplate = new TransactionTemplate(transactionManager);
 	}
-
-	@After
-	public void deleteAllCategories() {
-		for (Category c : repository.findAll()) {
-			System.out.println("deleting " + c.getTitle());
-			deleteCategory(c);
-		}
-	}
-
-	private void deleteCategory(final Category c) {
-		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
-			@Override
-			protected void doInTransactionWithoutResult(TransactionStatus status) {
-				deleteCategoryRecursive(c);
-			}
-		});
-	}
-
-	private void deleteCategoryRecursive(Category c) {
-		Category reloaded = repository.findOne(c.getId());
-		if (reloaded != null) {
-			if (reloaded.getSubCategories().isEmpty()) {
-				repository.delete(reloaded);
-			} else {
-				for (Category sub : reloaded.getSubCategories()) {
-					deleteCategoryRecursive(sub);
-				}
-			}
-		}
-	}
-
+	
 	@Test
 	public void testCreateCategory() {
 		inTest.createCategory("testCategory");
@@ -101,5 +77,36 @@ public class CategoryServiceTest extends AbstractContainerTest {
 
 		assertNotNull(returned);
 		assertNull(returned.getParent());
+	}
+	
+	@Test(expected=DataIntegrityViolationException.class)
+	public void testCreateCategoryDuplicateName ()
+	{
+		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+			@Override
+			protected void doInTransactionWithoutResult(TransactionStatus status) {
+				inTest.createCategory("parent");
+			}
+		});
+
+		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+			@Override
+			protected void doInTransactionWithoutResult(TransactionStatus status) {
+				Category parent = repository.findByTitle("parent");
+				Category test = inTest.createCategory("test");
+				test.setParentCategory(parent);
+				repository.save(test);
+			}
+		});
+
+		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+			@Override
+			protected void doInTransactionWithoutResult(TransactionStatus status) {
+				Category parent = repository.findByTitle("parent");
+				Category test = inTest.createCategory("test");
+				test.setParentCategory(parent);
+				repository.save(test);
+			}
+		});
 	}
 }

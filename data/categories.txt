@@ -1,0 +1,16 @@
+Appetizer
+Soup
+Salad/Raita
+Bread
+Curry
+Rice
+Veggi
+Daal
+Snack
+Festive
+Dessert
+
+Bread->Roti
+Bread->Naan
+Bread->Paratha
+Bread->Others

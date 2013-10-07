@@ -1,8 +1,8 @@
 package com.toprecipe.repository;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,5 +26,4 @@ public class RecipeRepositoryTest extends AbstractContainerTest {
 
 		assertEquals("JPA repository recipe", r.getTitle());
 	}
-
 }

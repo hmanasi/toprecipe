@@ -13,6 +13,8 @@ POST    /recipes/:id/edit         @com.toprecipe.controllers.Recipes.editRecipe(
 POST    /recipes/:id              @com.toprecipe.controllers.Recipes.updateRecipe(id: Long)
 POST    /recipes/:id/delete       @com.toprecipe.controllers.Recipes.deleteRecipe(id: Long)
 
+# Other admin actions
+GET     /admin/importCategories   @com.toprecipe.controllers.Admin.importCategories() 
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/img/glyphicons-halflings-white.png      controllers.Assets.at(path="/public", file="/images/glyphicons-halflings-white.png")

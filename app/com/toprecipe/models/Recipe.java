@@ -1,22 +1,23 @@
 package com.toprecipe.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import play.data.validation.Constraints.Required;
 
 @Entity
-@SequenceGenerator(name = "Recipe_Seq_Gen", sequenceName = "Recipe_Seq", initialValue = 1)
+@SequenceGenerator(name = "recipe_seq_gen", sequenceName = "recipe_seq", initialValue = 1)
+@Table(name = "recipe")
 public class Recipe {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Recipe_Seq_Gen")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq_gen")
 	private Long id;
 
 	@Required
@@ -24,8 +25,10 @@ public class Recipe {
 
 	private String image;
 
+	@Column(name="video_url")
 	private String videoUrl;
 
+	@Column(name="source_url")
 	private String sourceUrl;
 
 	@ManyToOne

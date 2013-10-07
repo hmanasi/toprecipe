@@ -1,9 +1,6 @@
 package com.toprecipe.services;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.avaje.ebean.annotation.Transactional;
 import com.toprecipe.models.Category;
@@ -14,7 +11,6 @@ import com.toprecipe.repository.FoodItemRepository;
 /*
  * A temporary class to add categories to the database. This class should be removed once DB schema is not reset every-time the server starts.
  */
-@Service
 public class CategoryInitializer {
 
 	@Autowired
@@ -24,7 +20,6 @@ public class CategoryInitializer {
 	@Autowired
 	private FoodItemRepository foodItemRepo;
 
-	@PostConstruct
 	@Transactional
 	public void initializeCategories() {
 
