@@ -1,4 +1,4 @@
-package com.toprecipe.services;
+package com.toprecipe.services.dataimport;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.toprecipe.repository.CategoryRepository;
+import com.toprecipe.services.dataimport.CategoryImporter;
 import com.toprecipie.config.AbstractContainerTest;
 
 public class CategoryImporterTest extends AbstractContainerTest {

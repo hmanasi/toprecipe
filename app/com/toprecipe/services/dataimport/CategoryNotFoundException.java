@@ -1,4 +1,4 @@
-package com.toprecipe.services;
+package com.toprecipe.services.dataimport;
 
 import com.toprecipe.models.Category;
 

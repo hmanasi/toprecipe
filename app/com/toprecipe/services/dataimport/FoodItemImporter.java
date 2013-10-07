@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.toprecipe.models.Category;
 import com.toprecipe.models.FoodItem;
 import com.toprecipe.repository.FoodItemRepository;
-import com.toprecipe.services.CategoryParser;
 
 @Service
 public class FoodItemImporter {

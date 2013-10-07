@@ -1,4 +1,4 @@
-package com.toprecipe.services;
+package com.toprecipe.services.dataimport;
 
 import java.io.BufferedReader;
 import java.io.IOException;

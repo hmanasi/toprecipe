@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import com.toprecipe.services.CategoryImporter;
+import com.toprecipe.services.dataimport.CategoryImporter;
 import com.toprecipe.services.dataimport.FoodItemImporter;
 
 @org.springframework.stereotype.Controller
