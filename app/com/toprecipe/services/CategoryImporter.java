@@ -27,7 +27,7 @@ public class CategoryImporter {
 		lineNo++;
 		while (line != null) {
 			try {
-				Category c = parser.parse(line);
+				Category c = parser.parseForNewCategory(line);
 				if (c != null) {
 					repo.save(c);
 					categoriesImported++;

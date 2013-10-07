@@ -12,8 +12,15 @@ public class CategoryParser {
 	@Autowired
 	private CategoryRepository repo;
 
-	public Category parse(String input) {
+	public Category parseForExistingCategory(String input) {
+		return resolveCategory(input, true);
+	}
 
+	public Category parseForNewCategory(String input) {
+		return resolveCategory(input, false);
+	}
+
+	private Category resolveCategory(String input, boolean alreadyExisting) {
 		String line = input.trim();
 
 		if (line.startsWith("#") || line.isEmpty()) {
@@ -22,11 +29,27 @@ public class CategoryParser {
 
 		String tokens[] = line.split("->");
 
-		Category c = new Category();
-		c.setTitle(tokens[tokens.length - 1].trim());
+		Category c = null;
+
+		Category parent = null;
 
 		if (tokens.length > 1) {
-			c.setParentCategory(resolveParent(null, tokens, 0, repo));
+			parent = resolveParent(null, tokens, 0, repo);
+		}
+
+		String title = tokens[tokens.length - 1].trim();
+
+		if (alreadyExisting) {
+			c = repo.findByTitleAndParent(title, parent);
+
+			if (c == null) {
+				throw new CategoryNotFoundException(title, parent);
+			}
+
+		} else {
+			c = new Category();
+			c.setTitle(title);
+			c.setParentCategory(parent);
 		}
 
 		return c;

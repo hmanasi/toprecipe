@@ -14,3 +14,6 @@ Bread->Roti
 Bread->Naan
 Bread->Paratha
 Bread->Others
+
+Rice->Biryani
+Rice->Biryani->Hyderabadi
