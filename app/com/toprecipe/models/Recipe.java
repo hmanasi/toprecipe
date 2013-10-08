@@ -74,4 +74,12 @@ public class Recipe {
 		this.image = image;
 	}
 
+	public FoodItem getFoodItem() {
+		return foodItem;
+	}
+
+	public void setFoodItem(FoodItem foodItem) {
+		this.foodItem = foodItem;
+	}
+
 }

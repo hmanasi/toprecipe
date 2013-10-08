@@ -1,5 +1,5 @@
 [ {
-  "title" : "Hyderabadi Chichen Dum Biryani",
+  "title" : "Hyderabadi Chicken Dum Biryani",
   "categoryTree" : "Rice->Biryani->Hyderabadi",
   "vegetarian" : false
 }, {
