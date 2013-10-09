@@ -19,7 +19,7 @@ GET     /admin/importFoodItems    @com.toprecipe.controllers.Admin.importFoodIte
 GET     /admin/importRecipes      @com.toprecipe.controllers.Admin.importRecipes()
 
 #Category>food item
-GET     /categories/:category_id/fooditems    @com.toprecipe.controllers.CategoryBrowser.foodItems(id: Long)
+GET     /categories/:category_title/fooditems    @com.toprecipe.controllers.CategoryBrowser.foodItems(category_title: String)
 
 
 # Map static resources from the /public folder to the /assets URL path

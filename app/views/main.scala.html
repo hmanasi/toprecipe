@@ -15,16 +15,22 @@
         	<a class="navbar-brand" href="#">toprecipe</a>
          		<div class"navbar-collapse collapse">
           			<ul class="nav navbar-nav">
-          				<li><a href="#">Appetizers</a></li>
-          				<li><a href="#">Soups</a></li>
+          				<li><a href="#">Appetizer</a></li>
+          				<li><a href="#">Soup</a></li>
           				<li><a href="#">Salad/Raita</a></li>
-            			<li><a href="#">Breads</a></li>
-            			<li><a href="#">Curries</a></li>
+            			<li class="dropdown">
+            			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bread <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@com.toprecipe.controllers.routes.CategoryBrowser.foodItems("Bread->Naan")">Naan</a></li>
+                        	<li><a href="#">Roti</a></li>
+                        	<li><a href="#">Paratha</a></li>
+                        	<li><a href="#">Others</a></li></ul>
+            			<li><a href="#">Curry</a></li>
             			<li><a href="#">Rice</a></li>
-            			<li><a href="#">Vegetables</a></li>
+            			<li><a href="#">Vegetable</a></li>
             			<li><a href="#">Daal</a></li>
-            			<li><a href="#">Snacks</a></li>
-            			<li><a href="#">Festive</a></li>
+            			<li><a href="#">Snack</a></li>
+            			<li><a href="#">Festival</a></li>
             			<li><a href="#">Dessert</a></li>
           			</ul> 
           			<ul class="nav navbar-nav navbar-right">
