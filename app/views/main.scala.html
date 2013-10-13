@@ -1,6 +1,10 @@
 @(title: String, scripts:Html=Html(""))(content: Html)
 @import helper.twitterBootstrap._
 
+@categoryLink(category:String, title:String) = {
+	<a href="@com.toprecipe.controllers.routes.CategoryBrowser.foodItems(category)">@title</a>
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -12,26 +16,26 @@
     <body>
         <div class = "navbar navbar-default navbar-fixed-top">
         	<div class="container">
-        	<a class="navbar-brand" href="#">toprecipe</a>
+        	<a class="navbar-brand" href="@com.toprecipe.controllers.routes.Application.index()">toprecipe</a>
          		<div class"navbar-collapse collapse">
           			<ul class="nav navbar-nav">
-          				<li><a href="#">Appetizer</a></li>
-          				<li><a href="#">Soup</a></li>
-          				<li><a href="#">Salad/Raita</a></li>
+          				<li>@categoryLink("Appetizer","Appetizer")</li>
+          				<li>@categoryLink("Soup","Soup")</li>
+          				<li>@categoryLink("Salad/Raita","Salad/Raita")</li>
             			<li class="dropdown">
             			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bread <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="@com.toprecipe.controllers.routes.CategoryBrowser.foodItems("Bread->Naan")">Naan</a></li>
-                        	<li><a href="#">Roti</a></li>
-                        	<li><a href="#">Paratha</a></li>
-                        	<li><a href="#">Others</a></li></ul>
-            			<li><a href="#">Curry</a></li>
-            			<li><a href="#">Rice</a></li>
-            			<li><a href="#">Vegetable</a></li>
-            			<li><a href="#">Daal</a></li>
-            			<li><a href="#">Snack</a></li>
-            			<li><a href="#">Festival</a></li>
-            			<li><a href="#">Dessert</a></li>
+                            <li>@categoryLink("Bread->Naan","Naan")</li>
+                        	<li>@categoryLink("Bread->Roti","Roti")</li>
+                        	<li>@categoryLink("Bread->Paratha","Paratha")</li>
+                        	<li>@categoryLink("Bread->Others","Others")</li></ul>
+            			<li>@categoryLink("Curry","Curry")</li>
+            			<li>@categoryLink("Rice","Rice")</li>
+            			<li>@categoryLink("Veggi","Veggi")</li>
+            			<li>@categoryLink("Daal","Daal")</li>
+            			<li>@categoryLink("Snack","Snack")</li>
+            			<li>@categoryLink("Festive","Festive")</li>
+            			<li>@categoryLink("Dessert","Dessert")</li>
           			</ul> 
           			<ul class="nav navbar-nav navbar-right">
             			<li><a href="#">Admin</a></li>

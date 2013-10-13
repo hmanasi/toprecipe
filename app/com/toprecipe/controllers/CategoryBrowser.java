@@ -16,7 +16,7 @@ public class CategoryBrowser extends Controller  {
 	RecipeRepository repo;
 	
 	public Result foodItems(String categoryTitle) {
-		return TODO;//ok(views.html.recipes.index.render(repo.));
+		return ok(views.html.foodItems.index.render());
 	}
 	
 	
