@@ -48,6 +48,7 @@ public class TopRecipeServiceTest extends AbstractContainerTest {
 	@Before
 	public void setup() {
 		transactionTemplate = new TransactionTemplate(transactionManager);
+		cleanup();
 	}
 
 	@After

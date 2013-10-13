@@ -16,4 +16,3 @@ Bread->Paratha
 Bread->Others
 
 Rice->Biryani
-Rice->Biryani->Hyderabadi

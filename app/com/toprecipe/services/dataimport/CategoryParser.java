@@ -2,6 +2,7 @@ package com.toprecipe.services.dataimport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.toprecipe.models.Category;
 import com.toprecipe.repository.CategoryRepository;
@@ -12,10 +13,12 @@ public class CategoryParser {
 	@Autowired
 	private CategoryRepository repo;
 
+	@Transactional
 	public Category parseForExistingCategory(String input) {
 		return resolveCategory(input, true);
 	}
 
+	@Transactional
 	public Category parseForNewCategory(String input) {
 		return resolveCategory(input, false);
 	}

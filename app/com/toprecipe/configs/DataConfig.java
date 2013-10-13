@@ -25,6 +25,7 @@ public class DataConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory());
         transactionManager.setDataSource(dataSource());
         transactionManager.setJpaDialect(new HibernateJpaDialect());
+       
         return transactionManager;
     }
 	

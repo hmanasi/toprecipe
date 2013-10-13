@@ -3,6 +3,7 @@ package com.toprecipe.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.Cascade;
 
 import play.data.validation.Constraints.Required;
 
@@ -29,7 +32,7 @@ public class Category {
 	private Long id;
 
 	@Required
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String title;
 
 	/**
@@ -47,6 +50,7 @@ public class Category {
 	@ManyToMany
 	@JoinTable(name = "category_food_item")
 	@Column(name = "food_item_id")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private List<FoodItem> foodItems = new ArrayList<>();
 
 	@ManyToOne
@@ -85,6 +89,15 @@ public class Category {
 	}
 
 	public void addFoodItem(FoodItem foodItem) {
-		foodItems.add(foodItem);
+		if (!getFoodItems().contains(foodItem)) {
+			getFoodItems().add(foodItem);
+		}
+		if (!foodItem.getCategories().contains(this)) {
+			foodItem.getCategories().add(this);
+		}
+	}
+
+	public List<FoodItem> getFoodItems() {
+		return foodItems;
 	}
 }

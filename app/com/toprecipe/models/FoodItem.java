@@ -3,6 +3,7 @@ package com.toprecipe.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,14 +23,15 @@ public class FoodItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FoodItem_Seq_Gen")
 	private Long id;
-	
+
 	@Column(unique = true, nullable = false)
 	private String title;
 
-	@ManyToMany(mappedBy = "foodItems")
+	@ManyToMany(mappedBy = "foodItems", cascade = { CascadeType.PERSIST,
+			CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Category> categories = new ArrayList<>();
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Recipe topRecipe;
 
 	@OneToMany(mappedBy = "foodItem")
@@ -56,8 +58,12 @@ public class FoodItem {
 	}
 
 	public void addCategory(Category category) {
-		this.categories.add(category);
-		category.addFoodItem(this);
+		if (!getCategories().contains(categories)) {
+			getCategories().add(category);
+		}
+		if (!category.getFoodItems().contains(this)) {
+			category.getFoodItems().add(this);
+		}
 	}
 
 	public Recipe getTopRecipe() {

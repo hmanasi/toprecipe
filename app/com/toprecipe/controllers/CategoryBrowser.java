@@ -8,17 +8,17 @@ import play.mvc.Result;
 
 import com.toprecipe.models.Recipe;
 import com.toprecipe.repository.RecipeRepository;
+import com.toprecipe.services.TopRecipeService;
 
 @org.springframework.stereotype.Controller
-public class CategoryBrowser extends Controller  {
-	
+public class CategoryBrowser extends Controller {
+
 	@Autowired
-	RecipeRepository repo;
-	
+	private TopRecipeService topRecipeService;
+
 	public Result foodItems(String categoryTitle) {
-		return ok(views.html.foodItems.index.render());
+		return ok(views.html.foodItems.index.render(topRecipeService
+				.getTopRecipes(categoryTitle)));
 	}
-	
-	
 
 }

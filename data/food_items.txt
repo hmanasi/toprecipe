@@ -1,9 +1,9 @@
 [ {
   "title" : "Hyderabadi Chicken Dum Biryani",
-  "categoryTree" : "Rice->Biryani->Hyderabadi",
+  "categoryTree" : "Rice->Biryani",
   "vegetarian" : false
 }, {
   "title" : "Hyderabadi Vegetarian Dum Biryani",
-  "categoryTree" : "Rice->Biryani->Hyderabadi",
+  "categoryTree" : "Rice->Biryani",
   "vegetarian" : true
 } ]
