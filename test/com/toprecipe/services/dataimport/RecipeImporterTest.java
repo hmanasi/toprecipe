@@ -30,7 +30,6 @@ import com.toprecipie.config.AbstractContainerTest;
 
 public class RecipeImporterTest extends AbstractContainerTest{
 	
-	
 	@Autowired
 	CategoryRepository categoryRepo;
 	@Autowired

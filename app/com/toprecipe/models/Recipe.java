@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -21,6 +22,7 @@ public class Recipe {
 	private Long id;
 
 	@Required
+	@Column(nullable=false)
 	private String title;
 
 	private String image;
@@ -32,6 +34,7 @@ public class Recipe {
 	private String sourceUrl;
 
 	@ManyToOne
+	@JoinColumn(name="food_item_id")
 	private FoodItem foodItem;
 
 	public Long getId() {

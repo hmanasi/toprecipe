@@ -9,19 +9,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@SequenceGenerator(name = "FoodItem_Seq_Gen", sequenceName = "FoodItem_Seq", initialValue = 1)
+@SequenceGenerator(name = "food_item_seq_gen", sequenceName = "food_item_seq", initialValue = 1)
 @Entity
 @Table(name = "food_item")
 public class FoodItem {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FoodItem_Seq_Gen")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "food_item_seq_gen")
 	private Long id;
 
 	@Column(unique = true, nullable = false)
@@ -32,9 +33,10 @@ public class FoodItem {
 	private List<Category> categories = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "top_recipe_id")
 	private Recipe topRecipe;
 
-	@OneToMany(mappedBy = "foodItem")
+	@OneToMany(mappedBy="foodItem")
 	private List<Recipe> recipes = new ArrayList<>();
 
 	public Long getId() {

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -44,12 +45,10 @@ public class Category {
 	// Nonveg -> Rice -> Biryani (2) -> Chicken Biryani (FoodItem)
 	// Rice -> Biryani(3) -> Chicken Biryani (FoodItem)
 	@OneToMany(mappedBy = "parent")
-	@Column(name = "sub_category_id")
 	private List<Category> subCategories = new ArrayList<>();
 
 	@ManyToMany
-	@JoinTable(name = "category_food_item")
-	@Column(name = "food_item_id")
+	@JoinTable(name = "category_food_item", joinColumns = { @JoinColumn(name = "category_id") }, inverseJoinColumns = { @JoinColumn(name = "food_item_id") })
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private List<FoodItem> foodItems = new ArrayList<>();
 
