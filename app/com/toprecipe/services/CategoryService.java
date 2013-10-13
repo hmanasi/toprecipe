@@ -14,23 +14,6 @@ public class CategoryService {
 	private CategoryRepository repository;
 	
 	@Transactional
-	public Category getCategoryChain (String title)
-	{
-		Category category = repository.findByTitle(title);
-		
-		if (category != null)
-		{
-			Category current = category;
-			while (current.getParent() != null)
-			{
-				current = current.getParent();
-			}
-		}
-		
-		return category;
-	}
-	
-	@Transactional
 	public Category createCategory (String title, Category parent)
 	{
 		Category category = new Category();
@@ -45,5 +28,4 @@ public class CategoryService {
 		category.setTitle(title);
 		return repository.save(category);
 	}
-	
 }

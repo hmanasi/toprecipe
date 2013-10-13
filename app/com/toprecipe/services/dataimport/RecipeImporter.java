@@ -33,11 +33,15 @@ public class RecipeImporter {
 
 		MappingIterator<RecipeJson> i = reader.readValues(in);
 
+		long imported = 0;
+
 		while (i.hasNext()) {
 			RecipeJson recipeJson = i.nextValue();
 			createFoodItem(recipeJson);
+			imported++;
 		}
 
+		System.out.println(String.format("Imported %d recipes.", imported));
 	}
 
 	private void createFoodItem(RecipeJson recipeJson)

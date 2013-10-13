@@ -57,6 +57,7 @@ public class FoodItem {
 
 	public void addCategory(Category category) {
 		this.categories.add(category);
+		category.addFoodItem(this);
 	}
 
 	public Recipe getTopRecipe() {

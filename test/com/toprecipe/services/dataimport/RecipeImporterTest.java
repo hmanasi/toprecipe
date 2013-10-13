@@ -53,9 +53,14 @@ public class RecipeImporterTest extends AbstractContainerTest{
 
 	@After
 	public void cleanup() {
-		recipeRepo.deleteAll();
-		foodItemRepo.deleteAll();
-		categoryRepo.deleteAll();
+		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+			@Override
+			public void doInTransactionWithoutResult(TransactionStatus status) {
+				recipeRepo.deleteAll();
+				foodItemRepo.deleteAll();
+				categoryRepo.deleteAll();
+			}
+		});
 	}
 
 	@Test

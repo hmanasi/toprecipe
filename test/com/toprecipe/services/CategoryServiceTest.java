@@ -2,7 +2,6 @@ package com.toprecipe.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -57,28 +56,6 @@ public class CategoryServiceTest extends AbstractContainerTest {
 		assertEquals(parent.getId(), child.getParent().getId());
 	}
 
-	@Test
-	public void testGetCategoryChainWhenParentExists() {
-		Category parent = inTest.createCategory("parent");
-		inTest.createCategory("child2", parent);
-
-		Category returned = inTest.getCategoryChain("child2");
-
-		assertNotNull(returned);
-		assertNotNull(returned.getParent());
-		assertEquals(parent.getId(), returned.getParent().getId());
-	}
-
-	@Test
-	public void testGetCategoryChainWhenNoParent() {
-		inTest.createCategory("test");
-
-		Category returned = inTest.getCategoryChain("test");
-
-		assertNotNull(returned);
-		assertNull(returned.getParent());
-	}
-	
 	@Test(expected=DataIntegrityViolationException.class)
 	public void testCreateCategoryDuplicateName ()
 	{
