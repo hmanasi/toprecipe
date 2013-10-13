@@ -26,6 +26,6 @@ libraryDependencies ++= Seq(
 
 play.Project.playJavaSettings
 
-javaOptions in (Test, run) += "-javaagent:/home/manasi/play-2.2.0/repository/cache/org.springframework/spring-instrument/jars/spring-instrument-3.2.4.RELEASE.jar"
+javaOptions in (Test, run) += "-javaagent:/home/nusrat/play-2.2.0/repository/cache/org.springframework/spring-instrument/jars/spring-instrument-3.2.4.RELEASE.jar"
 
 outputStrategy := Some(StdoutOutput)
