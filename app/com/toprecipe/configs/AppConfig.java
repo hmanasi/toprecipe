@@ -13,12 +13,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.aspectj.AnnotationTransactionAspect;
 
 @Configuration
 @ComponentScan(basePackages = { "com.toprecipe.controllers",
 		"com.toprecipe.services", "com.toprecipe.repository" })
 @EnableAspectJAutoProxy
+@EnableTransactionManagement
 public class AppConfig {
 	
 	@Autowired

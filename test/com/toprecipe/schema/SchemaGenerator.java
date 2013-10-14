@@ -15,6 +15,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 public class SchemaGenerator {
 	private Configuration cfg;
 
+	@SuppressWarnings("unchecked")
 	public SchemaGenerator(String packageName) throws Exception {
 		cfg = new Configuration();
 		cfg.setProperty("hibernate.hbm2ddl.auto", "create");

@@ -6,10 +6,7 @@ import java.io.InputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MappingIterator;
@@ -31,30 +28,10 @@ public class FoodItemImporter {
 	public CategoryRepository categoryRepo;
 	@Autowired
 	private PlatformTransactionManager transactionManager;
-	private TransactionTemplate transactionTemplate;
 
 	@Transactional
 	public void importFoodItems(final InputStream in)
 			throws JsonProcessingException, IOException {
-
-		transactionTemplate = new TransactionTemplate(transactionManager);
-
-		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
-
-			@Override
-			protected void doInTransactionWithoutResult(TransactionStatus status) {
-				try {
-					importItems(in);
-				} catch (IOException e) {
-					e.printStackTrace();
-					throw new RuntimeException(e);
-				}
-			}
-		});
-	}
-
-	private void importItems(InputStream in) throws IOException,
-			JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectReader reader = mapper.reader(FoodItemJson.class);
 
