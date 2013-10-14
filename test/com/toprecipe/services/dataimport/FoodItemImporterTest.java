@@ -20,11 +20,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.models.Category;
 import com.toprecipe.repository.CategoryRepository;
 import com.toprecipe.repository.FoodItemRepository;
 import com.toprecipe.services.CategoryService;
-import com.toprecipie.config.AbstractContainerTest;
 
 public class FoodItemImporterTest extends AbstractContainerTest {
 

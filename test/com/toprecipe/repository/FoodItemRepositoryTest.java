@@ -10,9 +10,9 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.models.FoodItem;
 import com.toprecipe.services.CategoryService;
-import com.toprecipie.config.AbstractContainerTest;
 
 public class FoodItemRepositoryTest extends AbstractContainerTest {
 

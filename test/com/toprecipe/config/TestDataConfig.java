@@ -1,4 +1,4 @@
-package com.toprecipie.config;
+package com.toprecipe.config;
 
 import javax.sql.DataSource;
 

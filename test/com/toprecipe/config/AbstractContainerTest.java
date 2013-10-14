@@ -1,4 +1,4 @@
-package com.toprecipie.config;
+package com.toprecipe.config;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

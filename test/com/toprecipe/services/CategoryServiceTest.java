@@ -13,9 +13,9 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.models.Category;
 import com.toprecipe.repository.CategoryRepository;
-import com.toprecipie.config.AbstractContainerTest;
 
 public class CategoryServiceTest extends AbstractContainerTest {
 	

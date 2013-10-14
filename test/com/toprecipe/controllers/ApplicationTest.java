@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.toprecipie.config.AbstractContainerTest;
+import com.toprecipe.config.AbstractContainerTest;
 
 public class ApplicationTest extends AbstractContainerTest{
 

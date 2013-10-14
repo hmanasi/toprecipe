@@ -13,11 +13,11 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.models.Category;
 import com.toprecipe.repository.CategoryRepository;
 import com.toprecipe.services.dataimport.CategoryNotFoundException;
 import com.toprecipe.services.dataimport.CategoryParser;
-import com.toprecipie.config.AbstractContainerTest;
 
 public class CategoryParserTest extends AbstractContainerTest {
 

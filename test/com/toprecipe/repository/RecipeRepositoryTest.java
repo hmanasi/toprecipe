@@ -6,8 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.models.Recipe;
-import com.toprecipie.config.AbstractContainerTest;
 
 public class RecipeRepositoryTest extends AbstractContainerTest {
 

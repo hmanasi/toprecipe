@@ -8,9 +8,9 @@ import org.junit.After;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.repository.CategoryRepository;
 import com.toprecipe.services.dataimport.CategoryImporter;
-import com.toprecipie.config.AbstractContainerTest;
 
 public class CategoryImporterTest extends AbstractContainerTest {
 
