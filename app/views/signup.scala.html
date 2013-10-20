@@ -1,0 +1,41 @@
+@(form:Form[com.toprecipe.controllers.Users.SignupInfo])
+
+@main("Sign up"){
+	@helper.form(com.toprecipe.controllers.routes.Users.createUser()) {
+		<h1>Sign Up</h1>
+
+		@if(form.hasGlobalErrors) {
+    		<p class="error">
+        		@form.globalError.message
+    		</p>
+		}
+
+		<p>
+			<input type="email" name="email" placeholder="Email" value="@form("email").value">
+		</p>
+		@for(error <- form("email").errors) {
+ 		   <p>@error.message</p>
+		}
+		<p>
+			<input type="repeatEmail" name="repeatEmail" placeholder="Re-enter Email" value="@form("repeatEmail").value">
+		</p>
+		@for(error <- form("repeatEmail").errors) {
+ 		   <p>@error.message</p>
+		}
+		<p>
+			<input type="password" name="password" placeholder="Password" value="@form("password").value">
+		</p>
+		@for(error <- form("password").errors) {
+ 		   <p>@error.message</p>
+		}		
+		<p>
+			<input type="password" name="repeatPassword" placeholder="Reenter Password" value="@form("repeatPassword").value">
+		</p>
+		@for(error <- form("repeatPassword").errors) {
+ 		   <p>@error.message</p>
+		}		
+		<p>
+			<button type="submit">Sign up</button>
+		</p>
+	}
+}

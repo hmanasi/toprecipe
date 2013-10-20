@@ -3,7 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           @com.toprecipe.controllers.Application.index()
+GET     /                         @com.toprecipe.controllers.Application.index()
+GET     /login                    @com.toprecipe.controllers.Application.login()
+POST    /login                    @com.toprecipe.controllers.Application.authenticate()
+
+# User management
+GET     /users/signup             @com.toprecipe.controllers.Users.signup()
+POST    /users/                   @com.toprecipe.controllers.Users.createUser()
 
 # Recipes          
 GET     /recipes                  @com.toprecipe.controllers.Recipes.recipes()

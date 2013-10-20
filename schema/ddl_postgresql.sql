@@ -22,11 +22,15 @@
 
     drop table if exists recipe cascade;
 
+    drop table if exists user cascade;
+
     drop sequence category_seq;
 
     drop sequence food_item_seq;
 
     drop sequence recipe_seq;
+
+    drop sequence user_seq;
 
     create table category (
         id bigint not null,
@@ -57,11 +61,22 @@
         primary key (id)
     );
 
+    create table user (
+        id bigint not null,
+        disabled boolean not null,
+        email varchar(255) not null,
+        passwordHash varchar(255) not null,
+        primary key (id)
+    );
+
     alter table category 
         add constraint category_u1 unique (parent_id, title);
 
     alter table food_item 
-        add constraint UK_7fvvjcxnt0gy82hi4fmhq01bo unique (title);
+        add constraint food_item_u1 unique (title);
+
+    alter table user 
+        add constraint user_u1 unique (email);
 
     alter table category 
         add constraint FK_81thrbnb8c08gua7tvqj7xdqk 
@@ -93,3 +108,5 @@
     create sequence food_item_seq;
 
     create sequence recipe_seq;
+
+    create sequence user_seq;

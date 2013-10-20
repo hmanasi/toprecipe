@@ -15,17 +15,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @SequenceGenerator(name = "food_item_seq_gen", sequenceName = "food_item_seq", initialValue = 1)
 @Entity
-@Table(name = "food_item")
+@Table(name = "food_item", uniqueConstraints = { @UniqueConstraint(name = "food_item_u1", columnNames = { "title" }) })
 public class FoodItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "food_item_seq_gen")
 	private Long id;
 
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private String title;
 
 	@ManyToMany(mappedBy = "foodItems", cascade = { CascadeType.PERSIST,
@@ -36,7 +37,7 @@ public class FoodItem {
 	@JoinColumn(name = "top_recipe_id")
 	private Recipe topRecipe;
 
-	@OneToMany(mappedBy="foodItem")
+	@OneToMany(mappedBy = "foodItem")
 	private List<Recipe> recipes = new ArrayList<>();
 
 	public Long getId() {

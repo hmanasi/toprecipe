@@ -12,7 +12,8 @@ import com.toprecipe.services.dataimport.RecipeImporterTest;
 @RunWith(Suite.class)
 @SuiteClasses({ CategoryImporterTest.class, CategoryParserTest.class,
 		FoodItemImporterTest.class, RecipeImporterTest.class,
-		CategoryServiceTest.class, TopRecipeServiceTest.class })
+		CategoryServiceTest.class, TopRecipeServiceTest.class,
+		PasswordHashServiceTest.class, UserServiceTest.class })
 public class ServiceTestSuite {
 
 }
