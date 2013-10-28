@@ -21,7 +21,8 @@ libraryDependencies ++= Seq(
   "org.aspectj" % "aspectjweaver" % "1.7.2",
   "org.springframework" % "spring-aspects" % "3.2.4.RELEASE",
   "cglib" % "cglib" % "2.2.2",
-  "com.fasterxml.jackson.core" % "jackson-databind" % "2.2.3"
+  "com.fasterxml.jackson.core" % "jackson-databind" % "2.2.3",
+  "org.jsoup" % "jsoup" % "1.7.2"
 )
 
 play.Project.playJavaSettings
