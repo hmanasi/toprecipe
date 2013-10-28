@@ -22,6 +22,7 @@ public class ImageFetcherTest {
 		File f = new File ("/tmp/images");
 		f.mkdirs();
 		inTest.setImageFolder("/tmp/images");
+		inTest.setImageFilter(new ImageFilter());
 	}
 
 	@Test

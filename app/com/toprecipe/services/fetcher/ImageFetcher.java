@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import play.libs.F.Function;
@@ -23,6 +24,12 @@ public class ImageFetcher {
 
 	private static final String DEFAULT_IMAGE_FOLDER = "public/images/temp";
 	private String imageFolder = DEFAULT_IMAGE_FOLDER;
+	private ImageFilter imageFilter;
+
+	@Autowired
+	public void setImageFilter(ImageFilter imageFilter) {
+		this.imageFilter = imageFilter;
+	}
 
 	void setImageFolder(String imageFolder) {
 		this.imageFolder = imageFolder;
@@ -50,7 +57,10 @@ public class ImageFetcher {
 									.getWidth(), inImage.getHeight());
 
 							image.setFile(storeImage(a.get(i)));
-							out.add(image);
+
+							if (!imageFilter.rejectFile(image)) {
+								out.add(image);
+							}
 						}
 
 						return out;
