@@ -16,3 +16,5 @@ Bread->Paratha
 Bread->Others
 
 Rice->Biryani
+Rice->Pulav
+Rice->Others
