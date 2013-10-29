@@ -31,7 +31,7 @@ public class ImageFilter {
 
 	/**
 	 * Rejects the image if the size can not be determined or if it is smaller
-	 * than the minimam dimensions
+	 * than the minimum dimensions
 	 * 
 	 * @param image
 	 * @return

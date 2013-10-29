@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -35,30 +37,64 @@ public class ImageFetcher {
 		this.imageFolder = imageFolder;
 	}
 
-	public Promise<List<Image>> fetch(final List<Image> in) {
+	/**
+	 * This function mutates the passed media
+	 * 
+	 * @param media
+	 * @return
+	 */
+	public Promise<Media> fetch(final Media media) {
+		return fetch(media.getImages()).map(new Function<List<Image>, Media>() {
+
+			@Override
+			public Media apply(List<Image> images) throws Throwable {
+				media.setImages(images);
+				return media;
+			}
+		});
+	}
+
+	public Promise<List<Image>> fetch(List<Image> images) {
+
+		final List<Image> fetchedImages = new ArrayList<Image>();
+		List<Promise<Response>> responseList = new ArrayList<>();
+
+		for (Image image : images) {
+			String urlString = image.getUrl();
+			try {
+				new URI(urlString);
+				responseList.add(WS.url(urlString).get());
+				fetchedImages.add(image);
+			} catch (URISyntaxException e) {
+				System.out
+						.println(String.format(
+								"Error fetching image %s. Skipping...",
+								image.getUrl()));
+			}
+		}
 
 		@SuppressWarnings("unchecked")
-		Promise<Response>[] responsePromise = new Promise[in.size()];
-
-		for (int i = 0; i < in.size(); i++) {
-			responsePromise[i] = WS.url(in.get(i).getUrl()).get();
-		}
+		Promise<Response>[] responsePromise = responseList
+				.toArray(new Promise[responseList.size()]);
 
 		Promise<List<Image>> out = Promise.sequence(responsePromise).map(
 				new Function<List<Response>, List<Image>>() {
 
 					@Override
-					public List<Image> apply(List<Response> a) throws Throwable {
+					public List<Image> apply(List<Response> responses)
+							throws Throwable {
 						List<Image> out = new ArrayList<>();
 
-						for (int i = 0; i < a.size(); i++) {
-							Image inImage = in.get(i);
+						for (int i = 0; i < responses.size(); i++) {
+							Image inImage = fetchedImages.get(i);
 							Image image = new Image(inImage.getUrl(), inImage
 									.getWidth(), inImage.getHeight());
 
-							image.setFile(storeImage(a.get(i)));
+							image.setFile(storeImage(responses.get(i)));
 
-							if (!imageFilter.rejectFile(image)) {
+							if (imageFilter.rejectFile(image)) {
+								image.getFile().delete();
+							} else {
 								out.add(image);
 							}
 						}
@@ -74,14 +110,15 @@ public class ImageFetcher {
 
 		String responsePath = response.getUri().getPath();
 		File file = getFileName(responsePath);
+		InputStream in = null;
+		OutputStream out = null;
 
 		try {
 			System.out.println(String.format("Storing %s to %s as %s",
 					responsePath, file.getParent(), file.getName()));
 
-			InputStream in = new BufferedInputStream(response.getBodyAsStream());
-			OutputStream out = new BufferedOutputStream(new FileOutputStream(
-					file));
+			in = new BufferedInputStream(response.getBodyAsStream());
+			out = new BufferedOutputStream(new FileOutputStream(file));
 			byte buffer[] = new byte[512];
 			int bytes = in.read(buffer);
 
@@ -90,12 +127,24 @@ public class ImageFetcher {
 				bytes = in.read(buffer);
 			}
 
-			out.close();
-			in.close();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
+			if (null != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
 		}
 
 		return file;
@@ -113,4 +162,5 @@ public class ImageFetcher {
 
 		return new File(new File(imageFolder), fileName);
 	}
+
 }

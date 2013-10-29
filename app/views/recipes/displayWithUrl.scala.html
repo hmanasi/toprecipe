@@ -9,6 +9,6 @@
     <h2 class="form-signin-heading">recipeForm("Title")</h2>
 
 	 @for(image <- media.getImages ()) {
-	 	<div> <img src="@image.getUrl()"/> </div>
+	 	<div> <img src="@routes.Assets.at("images/temp/"+image.getFile().getName())"/> </div>
 	 }
 }

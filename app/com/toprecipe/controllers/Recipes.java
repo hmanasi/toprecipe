@@ -1,22 +1,18 @@
 package com.toprecipe.controllers;
 
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import play.data.Form;
 import play.libs.F.Function;
 import play.libs.F.Function0;
 import play.libs.F.Promise;
-import play.libs.WS;
-import play.libs.WS.Response;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import com.toprecipe.models.Recipe;
 import com.toprecipe.repository.RecipeRepository;
 import com.toprecipe.services.fetcher.Media;
-import com.toprecipe.services.fetcher.RecipeHtmlParser;
+import com.toprecipe.services.fetcher.MediaFetcher;
 
 @org.springframework.stereotype.Controller
 public class Recipes extends Controller {
@@ -72,8 +68,12 @@ public class Recipes extends Controller {
 	}
 
 	@Autowired
-	private RecipeHtmlParser parser;
+	private MediaFetcher mediaFetcher;
 
+	/*
+	 * TODO: proper exception handling TODO: Fix parsing of dimensions when they
+	 * are in percentage or in points
+	 */
 	public Promise<Result> displaySourceUrl() {
 		final Form<Recipe> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
@@ -85,24 +85,13 @@ public class Recipes extends Controller {
 				}
 			});
 		} else {
-			return WS.url(filledForm.field("sourceUrl").value()).get()
-					.map(new Function<Response, Result>() {
-						public Result apply(Response response) {
-							try {
-								Media media = parser.parseHtml(response
-										.getBodyAsStream(),
-										filledForm.field("sourceUrl").value());
-								return ok(views.html.recipes.displayWithUrl
-										.render(recipeForm, media));
-							} catch (IOException e) {
-								filledForm.reject(e.getMessage());
-								return badRequest(views.html.recipes.createWithUrl
-										.render(filledForm));
-							}
+			return mediaFetcher.fetch(filledForm.field("sourceUrl").value())
+					.map(new Function<Media, Result>() {
+						public Result apply(Media media) {
+							return ok(views.html.recipes.displayWithUrl.render(
+									recipeForm, media));
 						}
 					});
 		}
-
 	}
-
 }

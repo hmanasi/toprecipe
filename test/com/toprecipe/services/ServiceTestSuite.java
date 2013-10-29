@@ -9,6 +9,7 @@ import com.toprecipe.services.dataimport.CategoryParserTest;
 import com.toprecipe.services.dataimport.FoodItemImporterTest;
 import com.toprecipe.services.dataimport.RecipeImporterTest;
 import com.toprecipe.services.fetcher.ImageFetcherTest;
+import com.toprecipe.services.fetcher.MediaFetcherTest;
 import com.toprecipe.services.fetcher.RecipeHtmlParserTest;
 
 @RunWith(Suite.class)
@@ -16,7 +17,8 @@ import com.toprecipe.services.fetcher.RecipeHtmlParserTest;
 		FoodItemImporterTest.class, RecipeImporterTest.class,
 		CategoryServiceTest.class, TopRecipeServiceTest.class,
 		PasswordHashServiceTest.class, UserServiceTest.class,
-		RecipeHtmlParserTest.class, ImageFetcherTest.class })
+		RecipeHtmlParserTest.class, ImageFetcherTest.class,
+		MediaFetcherTest.class })
 public class ServiceTestSuite {
 
 }

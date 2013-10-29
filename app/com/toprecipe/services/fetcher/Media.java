@@ -32,4 +32,8 @@ public class Media {
 	public void addFlashVideos(String flashVideo) {
 		flashVideos.add(flashVideo);
 	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
 }
