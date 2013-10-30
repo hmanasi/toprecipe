@@ -7,7 +7,7 @@
     <script type="text/javascript">
     var recipes = {
     		@for(recipe <- topRecipes) {
-    			@recipe.getFoodItemId():{title:"@recipe.getFoodItemTitle()",videoUrl:"@recipe.getVideoUrl"},
+    			@recipe.getFoodItemId():{title:"@recipe.getFoodItemTitle()",videoUrl:"@recipe.getVideoUrl", sourceUrl:"@recipe.getSourceUrl"},
     		}
     };
     </script>
@@ -44,9 +44,11 @@
   		<div class="modal-dialog">
     		<div class="modal-content">
       			<div class="modal-header">
-        			<h4><div id="recipe-title"></div></h4>
+        			<h3><div id="recipe-title"></div></h3>
    				</div>
-   				<div id="iframe" class="modal-body">
+   				<div class="modal-body">
+   				<div id="iframe"></div>
+   				<div id="source"></div>
    				</div>
    				<div class="modal-footer">
            		<a class="btn btn-primary" data-dismiss="modal">close</a>
