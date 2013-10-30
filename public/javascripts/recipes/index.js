@@ -16,3 +16,4 @@
 	$("[name=edit-button]").click (editClicked);
 	
 }());
+

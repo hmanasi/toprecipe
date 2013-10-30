@@ -2,21 +2,57 @@
 
 @import com.toprecipe.services.TopRecipe
 
-@main("Fooditem list"){
+@scripts = {
+    <script src="@routes.Assets.at("javascripts/fooditems/index.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+    var recipes = {
+    		@for(recipe <- topRecipes) {
+    			@recipe.getFoodItemId():{title:"@recipe.getFoodItemTitle()",videoUrl:"@recipe.getVideoUrl"},
+    		}
+    };
+    </script>
+    
+}
+
+@main("Fooditem list", scripts){
 	<div class=row>
 		@for(recipe <- topRecipes) {
 	    	<div class="col-sm-12 col-md-6">
 		    	<div class=thumbnail>
 		      		<div class="media">
-		        		<a class="pull-left" href="#">
-		          			<img class="media-object" src="@routes.Assets.at(recipe.getImage())" alt="@recipe.getFoodItemTitle()" style="width: 200px">
+		        		<a id="recipe-image-container" class="pull-left" href="#" foodItemId="@recipe.getFoodItemId()">
+		          			<img class="img-responsive" src="@routes.Assets.at(recipe.getImage())" alt="@recipe.getFoodItemTitle()" style="width: 200px">
 		        		</a>
 		        		<div class="media-body">
 		          			<h4 class="media-heading">@recipe.getFoodItemTitle()</h4>
+		          			<div class="input-group">
+	                			<span class="input-group-btn">
+	                				<p>
+                        			<button class="btn btn-primary" type="button" name="recipe-info-button" 
+                        				foodItemId="@recipe.getFoodItemId()">More Info</button>
+        	        				</p>
+        	        			</span>
+                			</div>
 		        		</div>
 					</div>
 				</div>
 			</div>
 		}
 	</div>
+	
+	<div class="modal fade" id="recipe-info-modal" role="dialog">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h4><div id="recipe-title"></div></h4>
+   				</div>
+   				<div id="iframe" class="modal-body">
+   				</div>
+   				<div class="modal-footer">
+           		<a class="btn btn-primary" data-dismiss="modal">close</a>
+       			</div>
+    		</div>
+  		</div>
+  	</div>
+
 }
