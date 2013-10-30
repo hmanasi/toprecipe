@@ -74,7 +74,7 @@ public class Recipes extends Controller {
 	 * TODO: proper exception handling TODO: Fix parsing of dimensions when they
 	 * are in percentage or in points
 	 */
-	public Promise<Result> displaySourceUrl() {
+	public Promise<Result> selectMedia() {
 		final Form<Recipe> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			return Promise.promise(new Function0<Result>() {
@@ -88,7 +88,7 @@ public class Recipes extends Controller {
 			return mediaFetcher.fetch(filledForm.field("sourceUrl").value())
 					.map(new Function<Media, Result>() {
 						public Result apply(Media media) {
-							return ok(views.html.recipes.displayWithUrl.render(
+							return ok(views.html.recipes.selectMedia.render(
 									recipeForm, media));
 						}
 					});

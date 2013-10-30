@@ -1,0 +1,51 @@
+@(recipeForm: Form[com.toprecipe.models.Recipe], media: com.toprecipe.services.fetcher.Media)
+
+@import helper._
+@import helper.twitterBootstrap._
+@import com.toprecipe.models.Recipe
+
+@scripts = {
+    <script src="@routes.Assets.at("javascripts/recipes/selectMedia.js")" type="text/javascript"></script>
+}
+
+@main("Create Recipe", scripts) {
+      
+    <h2 class="form-signin-heading">Select an image and a video for recipe @recipeForm("Title")</h2>
+
+	<div class="row">
+		@for(image <- media.getImages ()) {
+		 	<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">      	
+					<a href="#" class="image-selector" img="@image.getFile().getName ()"> 
+						<img width="300" src="@routes.Assets.at("images/temp/"+image.getFile().getName())" class="img-thumbnail">
+					</a>
+				</div>
+			</div>
+		}
+	</div>
+	<div class="row">
+		@for(youTubeVideo <- media.getYouTubeVideos ()){
+			<div class="col-sm-6 col-md-3">	
+				<div class="thumbnail">
+					<a href="#" class="video-selector" youtubeVideo="@youTubeVideo">      	
+						<iframe frameborder="0" width="300" height="200" allowfullscreen="" src="@youTubeVideo" />
+					</a>
+				</div>
+			</div>
+		}
+		@for(flashVideo <- media.getFlashVideos ()){
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">      	
+					<a href="#" class="video-selector" flashVideo="@flashVideo">
+						<object width="300" height="200" data="@flashVideo" type="application/x-shockwave-flash">
+							<param value="flashVideo" name="movie">
+							<param value="true" name="allowFullScreen">
+							<param value="always" name="allowscriptaccess">
+							<param value="transparent" name="wmode">
+						</object>
+					</a>
+				</div>
+			</div>
+		}
+	</div>
+}
