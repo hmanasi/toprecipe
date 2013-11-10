@@ -2,6 +2,7 @@
     
 	recipeinfoClicked = function (e) 
 	{
+		e.preventDefault();
 		var recipe = recipes[$(this).attr('foodItemId')];
 		generateDialogMarkup (recipe.title, recipe.videoUrl, recipe.sourceUrl);
 		$("#recipe-info-modal").modal();
@@ -19,6 +20,4 @@
 	
 	$("[name=recipe-info-button]").click (recipeinfoClicked);
 	$("#recipe-image-container").click (recipeinfoClicked);
-	
-	
 }());
