@@ -1,14 +1,43 @@
-(function () {
-    
-	imaqgeSelected = function (e)
+(function() {
+
+	selectImage = function (e)
 	{
+		e.preventDefault();
+		var $parent = $(this).parent();
+		
+		if ($parent.hasClass ('selected')){
+			$parent.removeClass ('selected');
+			$('#recipe-form input[name=Image]').attr('value','');
+		}else{
+			$('.image-selector').removeClass ('selected');
+			
+			$parent.addClass('selected');
+			$('#recipe-form input[name=Image]').attr('value',$parent.attr('img'));
+		}
 	}
 	
-	videoSelected = function (e)
+	selectVideo = function (e)
 	{
+		e.preventDefault();
+		var $parent = $(this).parent();
+
+		if ($parent.hasClass ('selected')){
+			$parent.removeClass ('selected');
+			
+			$('#recipe-form input[name=YouTubeVideo]').attr('value','');
+			$('#recipe-form input[name=FlashVideo]').attr('value','');
+
+		}else {
+			$('.video-selector').removeClass ('selected');
+			
+			$parent.addClass('selected');
+			
+			$('#recipe-form input[name=YouTubeVideo]').attr('value',$parent.attr('youTubeVideo'));
+			$('#recipe-form input[name=FlashVideo]').attr('value',$parent.attr('flashVideo'));
+		}
 	}
 	
-	$(".image-selector").click (imaqgeSelected);
-	$(".video-selector").click (videoSelected);
+	$(".select-image-button").click (selectImage);
+	$(".select-video-button").click (selectVideo);
 	
-}());
+})();

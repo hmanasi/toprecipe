@@ -18,9 +18,12 @@ import com.toprecipe.services.fetcher.MediaFetcher;
 public class Recipes extends Controller {
 
 	@Autowired
+	private MediaFetcher mediaFetcher;
+
+	@Autowired
 	RecipeRepository repo;
 
-	static Form<Recipe> recipeForm = Form.form(Recipe.class);
+	static Form<RecipeForm> recipeForm = Form.form(RecipeForm.class);
 
 	public Result recipes() {
 		return ok(views.html.recipes.index.render(repo.findAll()));
@@ -31,12 +34,19 @@ public class Recipes extends Controller {
 	}
 
 	public Result createRecipe() {
-		Form<Recipe> filledForm = recipeForm.bindFromRequest();
+		Form<RecipeForm> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.recipes.create.render(filledForm));
 		} else {
-			repo.save(filledForm.get());
-			return ok(views.html.recipes.create.render(recipeForm));
+			Recipe recipe = new Recipe ();
+			
+			RecipeForm recipeForm = filledForm.get();
+			recipe.setImage(recipeForm.getImage());
+			recipe.setTitle(recipeForm.getTitle());
+			recipe.setSourceUrl(recipeForm.getSourceUrl());
+			recipe.setVideoUrl(recipeForm.getYouTubeVideo());
+			repo.save(recipe);
+			return ok(views.html.recipes.create.render(this.recipeForm));
 		}
 	}
 
@@ -45,42 +55,17 @@ public class Recipes extends Controller {
 		return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 	}
 
-	public Result editRecipe(Long id) {
-		Form<Recipe> filledForm = recipeForm.fill(repo.findOne(id));
-		return ok(views.html.recipes.update.render(id, filledForm));
-	}
-
-	public Result updateRecipe(Long id) {
-		Form<Recipe> filledForm = recipeForm.bindFromRequest();
-		if (filledForm.hasErrors()) {
-			return badRequest(views.html.recipes.update.render(id, filledForm));
-		} else {
-			Recipe recipe = filledForm.get();
-			recipe.setId(id);
-			repo.save(recipe);
-			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
-		}
-
-	}
-
-	public Result newSourceUrl() {
-		return ok(views.html.recipes.createWithUrl.render(recipeForm));
-	}
-
-	@Autowired
-	private MediaFetcher mediaFetcher;
-
 	/*
 	 * TODO: proper exception handling TODO: Fix parsing of dimensions when they
 	 * are in percentage or in points
 	 */
 	public Promise<Result> selectMedia() {
-		final Form<Recipe> filledForm = recipeForm.bindFromRequest();
+		final Form<RecipeForm> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			return Promise.promise(new Function0<Result>() {
 				@Override
 				public Result apply() throws Throwable {
-					return badRequest(views.html.recipes.createWithUrl
+					return badRequest(views.html.recipes.create
 							.render(filledForm));
 				}
 			});
@@ -89,7 +74,7 @@ public class Recipes extends Controller {
 					.map(new Function<Media, Result>() {
 						public Result apply(Media media) {
 							return ok(views.html.recipes.selectMedia.render(
-									recipeForm, media));
+									filledForm, media));
 						}
 					});
 		}

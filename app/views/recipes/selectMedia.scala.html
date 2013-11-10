@@ -1,51 +1,62 @@
-@(recipeForm: Form[com.toprecipe.models.Recipe], media: com.toprecipe.services.fetcher.Media)
+@(recipeForm: Form[com.toprecipe.controllers.RecipeForm], media: com.toprecipe.services.fetcher.Media)
 
 @import helper._
 @import helper.twitterBootstrap._
-@import com.toprecipe.models.Recipe
+
+@head = {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/recipes/selectMedia.css")">
+}
 
 @scripts = {
     <script src="@routes.Assets.at("javascripts/recipes/selectMedia.js")" type="text/javascript"></script>
 }
 
-@main("Create Recipe", scripts) {
+@main("Create Recipe", scripts, head) {
       
-    <h2 class="form-signin-heading">Select an image and a video for recipe @recipeForm("Title")</h2>
+    <h2 class="form-signin-heading">Select an image</h2>
 
 	<div class="row">
 		@for(image <- media.getImages ()) {
 		 	<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">      	
-					<a href="#" class="image-selector" img="@image.getFile().getName ()"> 
-						<img width="300" src="@routes.Assets.at("images/temp/"+image.getFile().getName())" class="img-thumbnail">
-					</a>
+				<div class="thumbnail image-selector" img="@image.getFile().getName">      	
+					<img width="300" src="@routes.Assets.at("images/temp/"+image.getFile().getName())" class="img-thumbnail">
+					<button type="button" class="btn btn-primary btn-lg btn-block select-image-button">Select Image</button>				
 				</div>
 			</div>
 		}
 	</div>
+	
+	<h2 class="form-signin-heading">Select a video</h2>
+	
 	<div class="row">
 		@for(youTubeVideo <- media.getYouTubeVideos ()){
 			<div class="col-sm-6 col-md-3">	
-				<div class="thumbnail">
-					<a href="#" class="video-selector" youtubeVideo="@youTubeVideo">      	
-						<iframe frameborder="0" width="300" height="200" allowfullscreen="" src="@youTubeVideo" />
-					</a>
+				<div class="thumbnail video-selector" youTubeVideo="@youTubeVideo">
+					<iframe frameborder="0" width="250" height="200" allowfullscreen="" src="@youTubeVideo"></iframe>
+					<button type="button" class="btn btn-primary btn-lg btn-block select-video-button">Select Video</button>
 				</div>
 			</div>
 		}
 		@for(flashVideo <- media.getFlashVideos ()){
 			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">      	
-					<a href="#" class="video-selector" flashVideo="@flashVideo">
-						<object width="300" height="200" data="@flashVideo" type="application/x-shockwave-flash">
-							<param value="flashVideo" name="movie">
-							<param value="true" name="allowFullScreen">
-							<param value="always" name="allowscriptaccess">
-							<param value="transparent" name="wmode">
-						</object>
-					</a>
+				<div class="thumbnail video-selector" flashVideo="@flashVideo">      	
+					<object width="250" height="200" data="@flashVideo" type="application/x-shockwave-flash">
+						<param value="flashVideo" name="movie">
+						<param value="true" name="allowFullScreen">
+						<param value="always" name="allowscriptaccess">
+						<param value="transparent" name="wmode">
+					</object>
+					<button type="button" class="btn btn-primary btn-lg btn-block select-video-button">Select Video</button>
 				</div>
 			</div>
 		}
 	</div>
+		
+	@form(com.toprecipe.controllers.routes.Recipes.createRecipe(), 'id -> "recipe-form") {
+		@inputText(recipeForm("Title"), 'class -> "form-control", 'placeholder -> "Title")
+       	@inputText(recipeForm("SourceUrl"), 'class -> "form-control", 'placeholder -> "SourceUrl")
+       	@inputText(recipeForm("YouTubeVideo"), 'class -> "form-control", 'placeholder -> "YouTube Url")
+       	@inputText(recipeForm("FlashVideo"), 'class -> "form-control", 'placeholder -> "Flash Url")
+       	@inputText(recipeForm("Image"), 'class -> "form-control", 'placeholder -> "Image")
+	}	
 }
