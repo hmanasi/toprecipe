@@ -16,52 +16,69 @@
         @head
     </head>
     <body>
-        <div class = "navbar navbar-default navbar-fixed-top">
-        	<div class="container">
-        		<div class="navbar-header">
-          			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            		<span class="icon-bar"></span>
-            		<span class="icon-bar"></span>
-            		<span class="icon-bar"></span>
-          			</button>
-          			<a class="navbar-brand" href="@com.toprecipe.controllers.routes.Application.index()">toprecipe</a>
-        		</div>
-         		<div class="navbar-collapse collapse">
-          			<ul class="nav navbar-nav">
-          				<li>@categoryLink("Appetizer","Appetizer")</li>
-          				<li>@categoryLink("Soup","Soup")</li>
-          				<li>@categoryLink("Salad/Raita","Salad/Raita")</li>
-            			<li class="dropdown">
-            			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bread <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@categoryLink("Bread->Naan","Naan")</li>
-                        	<li>@categoryLink("Bread->Roti","Roti")</li>
-                        	<li>@categoryLink("Bread->Paratha","Paratha")</li>
-                        	<li>@categoryLink("Bread->Others","Others")</li></ul>
-            			<li>@categoryLink("Curry","Curry")</li>
-            			<li class="dropdown">
-            				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Rice <b class="caret"></b></a>
-            				<ul class="dropdown-menu">
-                            	<li>@categoryLink("Rice->Biryani","Biryani")</li>
-                            	<li>@categoryLink("Rice->Pulav","pulav")</li>
-                        	</ul>
-                        </li>
-            			<li>@categoryLink("Veggi","Veggi")</li>
-            			<li>@categoryLink("Daal","Daal")</li>
-            			<li>@categoryLink("Snack","Snack")</li>
-            			<li>@categoryLink("Festive","Festive")</li>
-            			<li>@categoryLink("Dessert","Dessert")</li>
+   		<div class="top-header">
+    		<div class="container">
+      			<div class="top-navbar">
+        			<ul class="nav navbar-navtop navbar-right">
+            			<li><a href="#">shop</a></li>
+            			<li><a href="#">login</a></li>
           			</ul> 
-          			
-        		</div>
-      		</div>       
-    	</div>
+      			</div>
+    		</div>
+  		</div>
+  		<div class="main-header">
+    		<div class="container">
+      			<div class="span3">
+        			<img width="115" height="115" alt="" src="@routes.Assets.at("images/logo.png")">
+      			</div>
+    		</div>
+    		<div class="main-navbar">
+      			<div class="container">
+        			<div class="navbar-header">
+          				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            				<span class="icon-bar"></span>
+            				<span class="icon-bar"></span>
+            				<span class="icon-bar"></span>
+          				</button>
+        			</div>
+        			<div class="navbar-collapse collapse">
+          				<ul class="nav navbar-nav">
+            				<li>@categoryLink("Appetizer","Appetizer")</li>
+            					<li>@categoryLink("Soup","Soup")</li>
+            					<li>@categoryLink("Salad/Raita","Salad/Raita")</li>
+            					<li class="dropdown">
+            						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bread <b class="caret"></b></a>
+                    					<ul class="dropdown-menu">
+                        					<li>@categoryLink("Bread->Naan","Naan")</li>
+                       						<li>@categoryLink("Bread->Roti","Roti")</li>
+                        					<li>@categoryLink("Bread->Paratha","Paratha")</li>
+                        					<li>@categoryLink("Bread->Others","Others")</li>
+                    					</ul>
+                    			</li>
+            					<li>@categoryLink("Curry","Curry")</li>
+            					<li class="dropdown">
+            						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Rice <b class="caret"></b></a>
+            							<ul class="dropdown-menu">
+                            				<li>@categoryLink("Rice->Biryani","Biryani")</li>
+                            				<li>@categoryLink("Rice->Pulav","Pulav")</li>
+                            				<li>@categoryLink("Rice->Others","Others")</li>
+                        				</ul>
+                        		</li>
+            					<li>@categoryLink("Veggi","Veggi")</li>
+            					<li>@categoryLink("Daal","Daal")</li>
+            					<li>@categoryLink("Snack","Snack")</li>
+            					<li>@categoryLink("Festive","Festive")</li>
+            					<li>@categoryLink("Dessert","Dessert")</li>
+          				</ul>
+        			</div>
+      			</div>
+    		</div>
+  		</div>
+        
     	
     	<div class="container">
     		@content
     	</div>
-    	
-    	
     		
         <script src="@routes.Assets.at("javascripts/jquery.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>    		
