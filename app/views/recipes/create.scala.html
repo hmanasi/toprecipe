@@ -1,24 +1,20 @@
-@(recipeForm: Form[com.toprecipe.models.Recipe])
+@(recipeForm: Form[com.toprecipe.controllers.RecipeForm])
 
 @import helper._
 @import helper.twitterBootstrap._
-@import com.toprecipe.models.Recipe
 
 @main("Create Recipe") {
       
     <h2 class="form-signin-heading">Add new recipe</h2>
     
    
-      @form(com.toprecipe.controllers.routes.Recipes.createRecipe()) {
-        @inputText(recipeForm("Title"), 'class -> "form-control", 'placeholder -> "Title")
-        @inputText(recipeForm(""), 'class -> "form-control", 'placeholder -> "Image")
-        @inputText(recipeForm(""), 'class -> "form-control", 'placeholder -> "Video url")
-        @inputText(recipeForm(""), 'class -> "form-control", 'placeholder -> "Source url")
+	@form(com.toprecipe.controllers.routes.Recipes.selectMedia()) {        
+		@inputText(recipeForm("Title"), 'class -> "form-control", 'placeholder -> "Title")
+        @inputText(recipeForm("SourceUrl"), 'class -> "form-control", 'placeholder -> "Source url")
         <button class="btn btn-lg btn-primary" type="submit">Create</button>
     }  
     
     @form(com.toprecipe.controllers.routes.Recipes.recipes()) {
-        
        <button class="btn btn-lg btn-primary" type="submit">View recipes</button>
     }
 }

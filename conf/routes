@@ -14,9 +14,8 @@ POST    /users/                   @com.toprecipe.controllers.Users.createUser()
 # Recipes          
 GET     /recipes                  @com.toprecipe.controllers.Recipes.recipes()
 GET     /recipes/new              @com.toprecipe.controllers.Recipes.newRecipe()
+POST    /recipes/selectMedia      @com.toprecipe.controllers.Recipes.selectMedia()
 POST    /recipes                  @com.toprecipe.controllers.Recipes.createRecipe()
-POST    /recipes/:id/edit         @com.toprecipe.controllers.Recipes.editRecipe(id: Long)
-POST    /recipes/:id              @com.toprecipe.controllers.Recipes.updateRecipe(id: Long)
 POST    /recipes/:id/delete       @com.toprecipe.controllers.Recipes.deleteRecipe(id: Long)
 
 # Other admin actions
