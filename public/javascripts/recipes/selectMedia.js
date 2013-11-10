@@ -37,7 +37,19 @@
 		}
 	}
 	
+	createRecipe = function (e)
+	{
+		$('#recipe-form').submit();
+	}
+	
+	cancelRecipe = function (e)
+	{
+		$('#recipe-list-form').submit();
+	}
+	
 	$(".select-image-button").click (selectImage);
 	$(".select-video-button").click (selectVideo);
+	$("#create-button").click (createRecipe);
+	$("#cancel-button").click (cancelRecipe);
 	
 })();

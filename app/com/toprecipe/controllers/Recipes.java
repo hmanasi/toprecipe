@@ -46,7 +46,7 @@ public class Recipes extends Controller {
 			recipe.setSourceUrl(recipeForm.getSourceUrl());
 			recipe.setVideoUrl(recipeForm.getYouTubeVideo());
 			repo.save(recipe);
-			return ok(views.html.recipes.create.render(this.recipeForm));
+			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 		}
 	}
 

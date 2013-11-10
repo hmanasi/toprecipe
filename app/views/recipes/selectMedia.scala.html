@@ -12,13 +12,20 @@
 }
 
 @main("Create Recipe", scripts, head) {
+
+   	<div class="input-group">
+    	<span class="input-group-btn">
+        	<button class="btn btn-primary" type="button" id="create-button">Create</button>
+           	<button class="btn btn-primary" type="button" id="cancel-button">Cancel</button>
+    	</span>
+   	</div>
       
     <h2 class="form-signin-heading">Select an image</h2>
 
 	<div class="row">
 		@for(image <- media.getImages ()) {
 		 	<div class="col-sm-6 col-md-3">
-				<div class="thumbnail image-selector" img="@image.getFile().getName">      	
+				<div class="thumbnail image-selector" img="@("images/temp/"+image.getFile().getName())">      	
 					<img width="300" src="@routes.Assets.at("images/temp/"+image.getFile().getName())" class="img-thumbnail">
 					<button type="button" class="btn btn-primary btn-lg btn-block select-image-button">Select Image</button>				
 				</div>
@@ -51,12 +58,17 @@
 			</div>
 		}
 	</div>
+
+	<div class="hidden">
+		@form(com.toprecipe.controllers.routes.Recipes.createRecipe(), 'id -> "recipe-form") {
+			@inputText(recipeForm("Title"), 'class -> "form-control", 'placeholder -> "Title")
+	       	@inputText(recipeForm("SourceUrl"), 'class -> "form-control", 'placeholder -> "SourceUrl")
+	       	@inputText(recipeForm("YouTubeVideo"), 'class -> "form-control", 'placeholder -> "YouTube Url")
+	       	@inputText(recipeForm("FlashVideo"), 'class -> "form-control", 'placeholder -> "Flash Url")
+	       	@inputText(recipeForm("Image"), 'class -> "form-control", 'placeholder -> "Image")
+		}
 		
-	@form(com.toprecipe.controllers.routes.Recipes.createRecipe(), 'id -> "recipe-form") {
-		@inputText(recipeForm("Title"), 'class -> "form-control", 'placeholder -> "Title")
-       	@inputText(recipeForm("SourceUrl"), 'class -> "form-control", 'placeholder -> "SourceUrl")
-       	@inputText(recipeForm("YouTubeVideo"), 'class -> "form-control", 'placeholder -> "YouTube Url")
-       	@inputText(recipeForm("FlashVideo"), 'class -> "form-control", 'placeholder -> "Flash Url")
-       	@inputText(recipeForm("Image"), 'class -> "form-control", 'placeholder -> "Image")
-	}	
+		@form(com.toprecipe.controllers.routes.Application.index(), 'id -> "recipe-list-form") {
+		}
+	</div>	
 }
