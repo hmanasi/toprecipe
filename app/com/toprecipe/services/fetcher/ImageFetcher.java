@@ -7,8 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -60,12 +62,12 @@ public class ImageFetcher {
 		List<Promise<Response>> responseList = new ArrayList<>();
 
 		for (Image image : images) {
-			String urlString = image.getUrl();
 			try {
-				new URI(urlString);
-				responseList.add(WS.url(urlString).get());
+				URL url = new URL(image.getUrl());
+				URI uri = new URI(url.getProtocol(),url.getHost(),url.getPath(),url.getQuery(),null);
+				responseList.add(WS.url(uri.toString()).get());
 				fetchedImages.add(image);
-			} catch (URISyntaxException e) {
+			} catch (URISyntaxException | MalformedURLException e) {
 				System.out
 						.println(String.format(
 								"Error fetching image %s. Skipping...",
