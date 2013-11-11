@@ -22,6 +22,7 @@ POST    /recipes/:id/delete       @com.toprecipe.controllers.Recipes.deleteRecip
 GET     /admin/importCategories   @com.toprecipe.controllers.Admin.importCategories() 
 GET     /admin/importFoodItems    @com.toprecipe.controllers.Admin.importFoodItems()
 GET     /admin/importRecipes      @com.toprecipe.controllers.Admin.importRecipes()
+GET     /admin/exportRecipes      @com.toprecipe.controllers.Admin.exportRecipes()
 
 #Category>food item
 GET     /categories/:category_title/fooditems    @com.toprecipe.controllers.CategoryBrowser.foodItems(category_title: String)

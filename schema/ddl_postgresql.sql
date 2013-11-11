@@ -53,10 +53,11 @@
 
     create table recipe (
         id bigint not null,
+        flash_video varchar(255),
         image varchar(255),
         source_url varchar(255),
         title varchar(255) not null,
-        video_url varchar(255),
+        you_tube_video varchar(255),
         food_item_id bigint,
         primary key (id)
     );

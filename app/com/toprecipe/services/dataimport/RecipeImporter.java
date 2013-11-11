@@ -11,6 +11,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
+import com.toprecipe.beans.RecipeBean;
 import com.toprecipe.models.FoodItem;
 import com.toprecipe.models.Recipe;
 import com.toprecipe.repository.FoodItemRepository;
@@ -29,14 +30,14 @@ public class RecipeImporter {
 	public void importRecipes(InputStream in) throws JsonProcessingException,
 			IOException, RecipeImportException {
 		ObjectMapper mapper = new ObjectMapper();
-		ObjectReader reader = mapper.reader(RecipeJson.class);
+		ObjectReader reader = mapper.reader(RecipeBean.class);
 
-		MappingIterator<RecipeJson> i = reader.readValues(in);
+		MappingIterator<RecipeBean> i = reader.readValues(in);
 
 		long imported = 0;
 
 		while (i.hasNext()) {
-			RecipeJson recipeJson = i.nextValue();
+			RecipeBean recipeJson = i.nextValue();
 			createFoodItem(recipeJson);
 			imported++;
 		}
@@ -44,7 +45,7 @@ public class RecipeImporter {
 		System.out.println(String.format("Imported %d recipes.", imported));
 	}
 
-	private void createFoodItem(RecipeJson recipeJson)
+	private void createFoodItem(RecipeBean recipeJson)
 			throws RecipeImportException {
 
 		if (recipeJson.getTitle() == null) {
@@ -70,7 +71,7 @@ public class RecipeImporter {
 		recipe.setTitle(recipeJson.getTitle());
 		recipe.setImage(recipeJson.getImage());
 		recipe.setSourceUrl(recipeJson.getSourceUrl());
-		recipe.setVideoUrl(recipeJson.getVideoUrl());
+		recipe.setYouTubeVideo(recipeJson.getYouTubeVideo());
 
 		recipe.setFoodItem(foodItem);
 		recipeRepository.save(recipe);

@@ -9,6 +9,7 @@ import play.libs.F.Promise;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import com.toprecipe.beans.RecipeBean;
 import com.toprecipe.models.Recipe;
 import com.toprecipe.repository.RecipeRepository;
 import com.toprecipe.services.fetcher.Media;
@@ -23,7 +24,7 @@ public class Recipes extends Controller {
 	@Autowired
 	RecipeRepository repo;
 
-	static Form<RecipeForm> recipeForm = Form.form(RecipeForm.class);
+	static Form<RecipeBean> recipeForm = Form.form(RecipeBean.class);
 
 	public Result recipes() {
 		return ok(views.html.recipes.index.render(repo.findAll()));
@@ -34,17 +35,17 @@ public class Recipes extends Controller {
 	}
 
 	public Result createRecipe() {
-		Form<RecipeForm> filledForm = recipeForm.bindFromRequest();
+		Form<RecipeBean> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.recipes.create.render(filledForm));
 		} else {
 			Recipe recipe = new Recipe ();
 			
-			RecipeForm recipeForm = filledForm.get();
+			RecipeBean recipeForm = filledForm.get();
 			recipe.setImage(recipeForm.getImage());
 			recipe.setTitle(recipeForm.getTitle());
 			recipe.setSourceUrl(recipeForm.getSourceUrl());
-			recipe.setVideoUrl(recipeForm.getYouTubeVideo());
+			recipe.setYouTubeVideo(recipeForm.getYouTubeVideo());
 			repo.save(recipe);
 			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 		}
@@ -60,7 +61,7 @@ public class Recipes extends Controller {
 	 * are in percentage or in points
 	 */
 	public Promise<Result> selectMedia() {
-		final Form<RecipeForm> filledForm = recipeForm.bindFromRequest();
+		final Form<RecipeBean> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			return Promise.promise(new Function0<Result>() {
 				@Override

@@ -10,16 +10,19 @@ public class TopRecipe {
 
 	private Long recipeId;
 	private String image;
-	private String videoUrl;
+	private String youTubeVideo;
 	private String sourceUrl;
+	private String flashVideo;
 
-	public TopRecipe(Long foodItemId, String foodItemTitle, Long maxId, Long recipeId,
-			String image, String videoUrl, String sourceUrl) {
+	public TopRecipe(Long foodItemId, String foodItemTitle, Long maxId,
+			Long recipeId, String image, String youTubeVideo,
+			String flashVideo, String sourceUrl) {
 		this.foodItemId = foodItemId;
 		this.foodItemTitle = foodItemTitle;
 		this.recipeId = recipeId;
 		this.image = image;
-		this.videoUrl = videoUrl;
+		this.youTubeVideo = youTubeVideo;
+		this.flashVideo = flashVideo;
 		this.sourceUrl = sourceUrl;
 	}
 
@@ -55,14 +58,6 @@ public class TopRecipe {
 		this.image = image;
 	}
 
-	public String getVideoUrl() {
-		return videoUrl;
-	}
-
-	public void setVideoUrl(String videoUrl) {
-		this.videoUrl = videoUrl;
-	}
-
 	public String getSourceUrl() {
 		return sourceUrl;
 	}
@@ -71,11 +66,27 @@ public class TopRecipe {
 		this.sourceUrl = sourceUrl;
 	}
 
+	public String getFlashVideo() {
+		return flashVideo;
+	}
+
+	public void setFlashVideo(String flashVideo) {
+		this.flashVideo = flashVideo;
+	}
+
+	public String getYouTubeVideo() {
+		return youTubeVideo;
+	}
+
+	public void setYouTubeVideo(String youTubeVideo) {
+		this.youTubeVideo = youTubeVideo;
+	}
+	
 	@Override
 	public String toString() {
 		return "TopRecipe [foodItemId=" + foodItemId + ", foodItemTitle="
 				+ foodItemTitle + ", recipeId=" + recipeId + ", image=" + image
-				+ ", videoUrl=" + videoUrl + ", sourceUrl=" + sourceUrl + "]";
+				+ ", youTubeVideo=" + youTubeVideo + ", sourceUrl=" + sourceUrl
+				+ ", flashVideo=" + flashVideo + "]";
 	}
-
 }

@@ -6,4 +6,16 @@
   "title" : "Hyderabadi Vegetarian Dum Biryani",
   "categoryTree" : "Rice->Biryani",
   "vegetarian" : true
+}, {
+  "title" : "Ukadiche Modak",
+  "categoryTree" : "Festive",
+  "vegetarian" : true
+}, {
+  "title" : "Curd Rice",
+  "categoryTree" : "Rice->Others",
+  "vegetarian" : true
+}, {
+  "title" : "Rasam",
+  "categoryTree" : "Daal",
+  "vegetarian" : true
 } ]

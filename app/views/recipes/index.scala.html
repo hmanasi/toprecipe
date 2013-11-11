@@ -16,9 +16,6 @@
             	<img src="@routes.Assets.at(recipe.getImage())" alt="@recipe.getTitle()" class="img-thumbnail">
             		
                 <h3>@recipe.getTitle()</h3>
-                
-                @recipe.getVideoUrl()
-                
                 	<div class="input-group">
 	                	<span class="input-group-btn">
     	                	<button class="btn btn-primary" type="button" name="delete-button" recipeId="@recipe.getId()">Delete</button>

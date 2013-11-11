@@ -1,15 +1,21 @@
-package com.toprecipe.services.dataimport;
+package com.toprecipe.beans;
 
-public class RecipeJson {
+import play.data.validation.Constraints.Required;
+
+public class RecipeBean {
+	@Required
 	private String title;
 
 	private String image;
 
-	private String videoUrl;
+	private String youTubeVideo;
 
-	private String sourceUrl;
-
+	private String flashVideo;
+	
 	private String foodItemTitle;
+
+	@Required
+	private String sourceUrl;
 
 	public String getTitle() {
 		return title;
@@ -27,12 +33,20 @@ public class RecipeJson {
 		this.image = image;
 	}
 
-	public String getVideoUrl() {
-		return videoUrl;
+	public String getYouTubeVideo() {
+		return youTubeVideo;
 	}
 
-	public void setVideoUrl(String videoUrl) {
-		this.videoUrl = videoUrl;
+	public void setYouTubeVideo(String youTubeVideo) {
+		this.youTubeVideo = youTubeVideo;
+	}
+
+	public String getFlashVideo() {
+		return flashVideo;
+	}
+
+	public void setFlashVideo(String flashVideo) {
+		this.flashVideo = flashVideo;
 	}
 
 	public String getSourceUrl() {

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.toprecipe.beans.RecipeBean;
 import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.models.Category;
 import com.toprecipe.models.FoodItem;
@@ -91,40 +92,41 @@ public class RecipeImporterTest extends AbstractContainerTest{
 			}
 		});
 	}
-	
 
-	private String testString = "[ {"+
-			"  \"title\" : \"Hyderabadi Chichen Dum Biryani\","+
-			"  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\","+
-			"  \"videoUrl\" : \"https://www.youtube-nocookie.com/embed/QjvQ7T01tLo\","+
-			"  \"sourceUrl\" : \"http://www.vahrehvah.com/Hyderabadi+Chicken+Biryani:3144\","+
-			"  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\""+
-			"}, {"+
-			"  \"title\" : \"Hyderabadi Chichen Dum Biryani\","+
-			"  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\","+
-			"  \"videoUrl\" : \"http://www.youtube.com/embed/rcCTwFpWxpE\","+
-			"  \"sourceUrl\" : \"http://hellohyderabad.com/Recipes/Non-Vegetarian/Hyderabad-Dum-Biryani/\","+
-			"  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\""+
+	private String testString = "[ {" +
+			"  \"title\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\"," +
+			"  \"youTubeVideo\" : \"https://www.youtube-nocookie.com/embed/QjvQ7T01tLo\"," +
+			"  \"flashVideo\" : null," +
+			"  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"sourceUrl\" : \"http://www.vahrehvah.com/Hyderabadi+Chicken+Biryani:3144\"" +
+			"}, {" +
+			"  \"title\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\"," +
+			"  \"youTubeVideo\" : \"http://www.youtube.com/embed/rcCTwFpWxpE\"," +
+			"  \"flashVideo\" : null," +
+			"  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"sourceUrl\" : \"http://hellohyderabad.com/Recipes/Non-Vegetarian/Hyderabad-Dum-Biryani/\"" +
 			"} ]";
 	
 	@Test
 	public void export() throws JsonProcessingException {
-		RecipeJson recipeJson1 = new RecipeJson();
-		recipeJson1.setTitle("Hyderabadi Chichen Dum Biryani");
+		RecipeBean recipeJson1 = new RecipeBean();
+		recipeJson1.setTitle("Hyderabadi Chicken Dum Biryani");
 		recipeJson1.setImage("images/recipe/vah_chicken_biryani.jpg");
 		recipeJson1
 				.setSourceUrl("http://www.vahrehvah.com/Hyderabadi+Chicken+Biryani:3144");
 		recipeJson1
-				.setVideoUrl("https://www.youtube-nocookie.com/embed/QjvQ7T01tLo");
-		recipeJson1.setFoodItemTitle("Hyderabadi Chichen Dum Biryani");
+				.setYouTubeVideo("https://www.youtube-nocookie.com/embed/QjvQ7T01tLo");
+		recipeJson1.setFoodItemTitle("Hyderabadi Chicken Dum Biryani");
 
-		RecipeJson recipeJson2 = new RecipeJson();
-		recipeJson2.setTitle("Hyderabadi Chichen Dum Biryani");
+		RecipeBean recipeJson2 = new RecipeBean();
+		recipeJson2.setTitle("Hyderabadi Chicken Dum Biryani");
 		recipeJson2.setImage("images/recipe/vah_chicken_biryani.jpg");
 		recipeJson2
 				.setSourceUrl("http://hellohyderabad.com/Recipes/Non-Vegetarian/Hyderabad-Dum-Biryani/");
-		recipeJson2.setVideoUrl("http://www.youtube.com/embed/rcCTwFpWxpE");
-		recipeJson2.setFoodItemTitle("Hyderabadi Chichen Dum Biryani");
+		recipeJson2.setYouTubeVideo("http://www.youtube.com/embed/rcCTwFpWxpE");
+		recipeJson2.setFoodItemTitle("Hyderabadi Chicken Dum Biryani");
 
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -135,5 +137,4 @@ public class RecipeImporterTest extends AbstractContainerTest{
 				recipeJson2)));
 
 	}
-
 }

@@ -18,7 +18,7 @@ public class TopRecipeService {
 	@Autowired
 	private CategoryParser categoryParser;
 	
-	private static final String TOP_RECIPE_QUERY = "SELECT NEW com.toprecipe.services.TopRecipe (f.id, f.title, r.id, r.id , r.image, r.videoUrl, r.sourceUrl) "
+	private static final String TOP_RECIPE_QUERY = "SELECT NEW com.toprecipe.services.TopRecipe (f.id, f.title, r.id, r.id , r.image, r.youTubeVideo, r.flashVideo, r.sourceUrl) "
 			+ "FROM Recipe r JOIN r.foodItem f JOIN f.categories c "
 			+ "WHERE c.id = :category_id AND r.id IN "
 			+ " (SELECT max(r1.id) FROM Recipe r1 JOIN r1.foodItem f1 GROUP BY f1.id)";

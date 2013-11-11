@@ -27,9 +27,12 @@ public class Recipe {
 
 	private String image;
 
-	@Column(name="video_url")
-	private String videoUrl;
+	@Column(name="you_tube_video")
+	private String youTubeVideo;
 
+	@Column(name="flash_video")
+	private String flashVideo;
+	
 	@Column(name="source_url")
 	private String sourceUrl;
 
@@ -53,12 +56,12 @@ public class Recipe {
 		this.title = title;
 	}
 
-	public String getVideoUrl() {
-		return videoUrl;
+	public String getYouTubeVideo() {
+		return youTubeVideo;
 	}
 
-	public void setVideoUrl(String videoUrl) {
-		this.videoUrl = videoUrl;
+	public void setYouTubeVideo(String youTubeVideo) {
+		this.youTubeVideo = youTubeVideo;
 	}
 
 	public String getSourceUrl() {
@@ -83,6 +86,14 @@ public class Recipe {
 
 	public void setFoodItem(FoodItem foodItem) {
 		this.foodItem = foodItem;
+	}
+
+	public String getFlashVideo() {
+		return flashVideo;
+	}
+
+	public void setFlashVideo(String flashVideo) {
+		this.flashVideo = flashVideo;
 	}
 
 }
