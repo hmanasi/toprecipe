@@ -13,7 +13,8 @@ POST    /users/                   @com.toprecipe.controllers.Users.createUser()
 
 # Recipes          
 GET     /recipes                  @com.toprecipe.controllers.Recipes.recipes()
-GET     /recipes/new              @com.toprecipe.controllers.Recipes.newRecipe()
+#GET     /recipes/new              @com.toprecipe.controllers.Recipes.newRecipe()
+GET     /recipes/new/:categoryTitle @com.toprecipe.controllers.Recipes.newRecipe(categoryTitle: String)
 POST    /recipes/selectMedia      @com.toprecipe.controllers.Recipes.selectMedia()
 POST    /recipes                  @com.toprecipe.controllers.Recipes.createRecipe()
 POST    /recipes/:id/delete       @com.toprecipe.controllers.Recipes.deleteRecipe(id: Long)

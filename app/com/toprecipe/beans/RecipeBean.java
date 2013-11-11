@@ -1,5 +1,7 @@
 package com.toprecipe.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import play.data.validation.Constraints.Required;
 
 public class RecipeBean {
@@ -14,6 +16,9 @@ public class RecipeBean {
 	
 	private String foodItemTitle;
 
+	@JsonIgnore
+	private String categoryTitle;
+	
 	@Required
 	private String sourceUrl;
 
@@ -63,5 +68,13 @@ public class RecipeBean {
 
 	public void setFoodItemTitle(String foodItemTitle) {
 		this.foodItemTitle = foodItemTitle;
+	}
+
+	public String getCategoryTitle() {
+		return categoryTitle;
+	}
+
+	public void setCategoryTitle(String categoryTitle) {
+		this.categoryTitle = categoryTitle;
 	}
 }

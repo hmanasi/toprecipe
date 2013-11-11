@@ -15,7 +15,7 @@ public class CategoryBrowser extends Controller {
 
 	public Result foodItems(String categoryTitle) {
 		return ok(views.html.foodItems.index.render(topRecipeService
-				.getTopRecipes(categoryTitle)));
+				.getTopRecipes(categoryTitle), categoryTitle));
 	}
 
 }

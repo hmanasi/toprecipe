@@ -12,6 +12,7 @@ import play.mvc.Result;
 import com.toprecipe.beans.RecipeBean;
 import com.toprecipe.models.Recipe;
 import com.toprecipe.repository.RecipeRepository;
+import com.toprecipe.services.RecipeService;
 import com.toprecipe.services.fetcher.Media;
 import com.toprecipe.services.fetcher.MediaFetcher;
 
@@ -23,6 +24,8 @@ public class Recipes extends Controller {
 
 	@Autowired
 	RecipeRepository repo;
+	@Autowired
+	RecipeService recipeService;
 
 	static Form<RecipeBean> recipeForm = Form.form(RecipeBean.class);
 
@@ -34,6 +37,13 @@ public class Recipes extends Controller {
 		return ok(views.html.recipes.create.render(recipeForm));
 	}
 
+	public Result newRecipe(String categoryTitle) {
+		RecipeBean bean = new RecipeBean();
+		bean.setCategoryTitle (categoryTitle);
+		Form<RecipeBean> form = recipeForm.fill(bean);
+		return ok(views.html.recipes.create.render(form));
+	}
+	
 	public Result createRecipe() {
 		Form<RecipeBean> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
@@ -46,7 +56,7 @@ public class Recipes extends Controller {
 			recipe.setTitle(recipeForm.getTitle());
 			recipe.setSourceUrl(recipeForm.getSourceUrl());
 			recipe.setYouTubeVideo(recipeForm.getYouTubeVideo());
-			repo.save(recipe);
+			recipeService.addRecipe(recipe, recipeForm.getCategoryTitle());
 			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 		}
 	}
