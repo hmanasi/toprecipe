@@ -40,7 +40,8 @@ public class ImageFetcher {
 	}
 
 	/**
-	 * This function mutates the passed media
+	 * This function mutates the passed media to update it with information of
+	 * new image list post-fetch and filter.
 	 * 
 	 * @param media
 	 * @return
@@ -97,6 +98,7 @@ public class ImageFetcher {
 							if (imageFilter.rejectFile(image)) {
 								image.getFile().delete();
 							} else {
+								image.getFile().deleteOnExit();
 								out.add(image);
 							}
 						}
@@ -140,7 +142,7 @@ public class ImageFetcher {
 					// ignore
 				}
 			}
-			if (null != null) {
+			if (in != null) {
 				try {
 					in.close();
 				} catch (IOException e) {
