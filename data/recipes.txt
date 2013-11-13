@@ -33,4 +33,25 @@
   "flashVideo" : null,
   "foodItemTitle" : "Rasam",
   "sourceUrl" : "http://showmethecurry.com/soups/rasam-recipe.html"
+}, {
+  "title" : "Peas Pulav",
+  "image" : "public/images/recipes/6643c0bd-261e-449b-98c7-6e246bd17824.jpeg",
+  "youTubeVideo" : "http://www.youtube.com/embed/grV9sC5A9wY",
+  "flashVideo" : null,
+  "foodItemTitle" : "Peas Pulav",
+  "sourceUrl" : "http://www.madhurasrecipe.com/veg-rice/Peas-Pulav"
+}, {
+  "title" : "Kadhai Chicken",
+  "image" : "images/recipes/5bfae748-673a-49f3-b826-2d443c5f8b34.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/hwUVb-3T9xo?rel=0",
+  "flashVideo" : null,
+  "foodItemTitle" : "Kadhai Chicken",
+  "sourceUrl" : "http://www.madhurasrecipe.com/non-veg-curry/Kadhai-Chicken"
+}, {
+  "title" : "Onion Pakoda",
+  "image" : "images/recipes/39fb2832-e97a-433a-8f59-46af4ad2f7d4.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/RwdVsLPq9iM",
+  "flashVideo" : null,
+  "foodItemTitle" : "Onion Pakoda",
+  "sourceUrl" : "http://www.madhurasrecipe.com/appetizers/Kanda-Bhaji"
 } ]

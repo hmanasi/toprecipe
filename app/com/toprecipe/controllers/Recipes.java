@@ -1,5 +1,7 @@
 package com.toprecipe.controllers;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import play.data.Form;
@@ -39,24 +41,30 @@ public class Recipes extends Controller {
 
 	public Result newRecipe(String categoryTitle) {
 		RecipeBean bean = new RecipeBean();
-		bean.setCategoryTitle (categoryTitle);
+		bean.setCategoryTitle(categoryTitle);
 		Form<RecipeBean> form = recipeForm.fill(bean);
 		return ok(views.html.recipes.create.render(form));
 	}
-	
+
 	public Result createRecipe() {
 		Form<RecipeBean> filledForm = recipeForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.recipes.create.render(filledForm));
 		} else {
-			Recipe recipe = new Recipe ();
-			
+			Recipe recipe = new Recipe();
+
 			RecipeBean recipeForm = filledForm.get();
 			recipe.setImage(recipeForm.getImage());
 			recipe.setTitle(recipeForm.getTitle());
 			recipe.setSourceUrl(recipeForm.getSourceUrl());
 			recipe.setYouTubeVideo(recipeForm.getYouTubeVideo());
-			recipeService.addRecipe(recipe, recipeForm.getCategoryTitle());
+			try {
+				recipeService.addRecipe(recipe, recipeForm.getCategoryTitle());
+			} catch (IOException e) {
+				// TODO Find a better way to handle this exception
+				e.printStackTrace();
+				return internalServerError("Internal error processing request.");
+			}
 			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 		}
 	}

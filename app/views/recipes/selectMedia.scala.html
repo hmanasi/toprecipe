@@ -25,7 +25,7 @@
 	<div class="row">
 		@for(image <- media.getImages ()) {
 		 	<div class="col-sm-6 col-md-3">
-				<div class="thumbnail image-selector" img="@("images/temp/"+image.getFile().getName())">      	
+				<div class="thumbnail image-selector" img="@(image.getFile().getName())">      	
 					<img width="300" src="@routes.Assets.at("images/temp/"+image.getFile().getName())" class="img-thumbnail">
 					<button type="button" class="btn btn-primary btn-lg btn-block select-image-button">Select Image</button>				
 				</div>
@@ -66,6 +66,7 @@
 	       	@inputText(recipeForm("YouTubeVideo"), 'class -> "form-control", 'placeholder -> "YouTube Url")
 	       	@inputText(recipeForm("FlashVideo"), 'class -> "form-control", 'placeholder -> "Flash Url")
 	       	@inputText(recipeForm("Image"), 'class -> "form-control", 'placeholder -> "Image")
+	        @inputText(recipeForm("categoryTitle"), 'class -> "form-control", 'placeholder -> "Category Title")
 		}
 		
 		@form(com.toprecipe.controllers.routes.Application.index(), 'id -> "recipe-list-form") {

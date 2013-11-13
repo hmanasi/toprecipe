@@ -13,18 +13,34 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ImageFileHelper {
-
+	private static String TMP_IMAGE_FOLDER = "public/images/temp";
 	private static String IMAGE_FOLDER = "public/images/recipes";
-	private String imageFolder = IMAGE_FOLDER;
 
-	void setImageFolder(String imageFolder) {
+	private String imageFolder = IMAGE_FOLDER;
+	private String tmpImageFolder = TMP_IMAGE_FOLDER;
+
+	public void setImageFolder(String imageFolder) {
 		this.imageFolder = imageFolder;
 	}
 
-	public File makeImagePermanent(File tmpImage) throws IOException {
+	public void setTempImageFolder(String tmpImageFolder) {
+		this.tmpImageFolder = tmpImageFolder;
+	}
+
+	/**
+	 * Accept image file name. Assume that the image is placed in the temp
+	 * images folder. Copies the image to the IMAGES_FOLDER and return image URL
+	 * relative to the server.
+	 * 
+	 * @param imageName
+	 * @return
+	 * @throws IOException
+	 */
+	public File makeImagePermanent(String imageName) throws IOException {
 		byte buffer[] = new byte[512];
 
-		File toFile = new File(imageFolder, tmpImage.getName());
+		File tmpImage = new File(tmpImageFolder, imageName);
+		File toFile = new File(imageFolder, imageName);
 
 		System.out.println(String.format("Copying image file from %s to %s",
 				tmpImage.getCanonicalPath(), toFile.getAbsolutePath()));

@@ -16,23 +16,25 @@ public class ImageFileHelperTest {
 	@Before
 	public void setup() throws IOException {
 		inTest = new ImageFileHelper();
-		File outFolder = new File("/tmp/test.imageFileHelperTest");
+		File outFolder = new File("/tmp/test.imageFileHelperTest.out");
 		outFolder.deleteOnExit();
 		outFolder.mkdirs();
 
 		inTest.setImageFolder(outFolder.getCanonicalPath());
+		inTest.setTempImageFolder("/tmp");
 	}
 
 	@Test
 	public void testSaveImagePermanent() throws IOException {
-		File src = File.createTempFile("tst", "imgFileHelper");
-
+		File src = File
+				.createTempFile("tst", "imgFileHelper", new File("/tmp"));
 		FileWriter out = new FileWriter(src);
 		out.write("A test string...");
 		out.close();
 
-		File dst = inTest.makeImagePermanent(src);
+		File dst = inTest.makeImagePermanent(src.getName());
 		assertTrue(dst.exists());
+		assertEquals(src.getName(), dst.getName());
 	}
 
 }
