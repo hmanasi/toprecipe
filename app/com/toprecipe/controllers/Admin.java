@@ -14,6 +14,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import com.toprecipe.services.dataimport.CategoryImporter;
+import com.toprecipe.services.dataimport.FoodItemExporter;
 import com.toprecipe.services.dataimport.FoodItemImporter;
 import com.toprecipe.services.dataimport.RecipeExporter;
 import com.toprecipe.services.dataimport.RecipeImportException;
@@ -30,6 +31,8 @@ public class Admin extends Controller {
 	RecipeImporter recipeImporter;
 	@Autowired
 	RecipeExporter recipeExporter;
+	@Autowired
+	FoodItemExporter foodItemExporter;
 
 	public Result importCategories() {
 		File file = new File("data/categories.txt");
@@ -82,8 +85,36 @@ public class Admin extends Controller {
 	}
 
 	public Result exportRecipes() {
-		File file = new File("data/recipes.txt");
+
+		StringBuilder status = new StringBuilder();
+
+		File file = new File("data/food_items.txt");
 		OutputStream out = null;
+
+		if (file.exists()) {
+			try {
+				out = new FileOutputStream(file);
+				foodItemExporter.export(out);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return internalServerError("error exporting fooditems");
+			} finally {
+				if (out != null) {
+					try {
+						out.close();
+					} catch (IOException e) {
+						// Ignore
+					}
+				}
+			}
+			status.append("Categories exported.\n");
+		} else {
+			System.out.println("File not found" + file.getAbsolutePath());
+			return internalServerError("Did not find food items.");
+		}
+
+		file = new File("data/recipes.txt");
+		out = null;
 
 		if (file.exists()) {
 			try {
@@ -101,7 +132,8 @@ public class Admin extends Controller {
 					}
 				}
 			}
-			return ok("Recipes exported.");
+			status.append("Recipes exported.");
+			return ok(status.toString());
 		} else {
 			System.out.println("File not found" + file.getAbsolutePath());
 			return internalServerError("Did not find recipes.");

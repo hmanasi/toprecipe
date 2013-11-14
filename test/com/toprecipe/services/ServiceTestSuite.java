@@ -6,6 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import com.toprecipe.services.dataimport.CategoryImporterTest;
 import com.toprecipe.services.dataimport.CategoryParserTest;
+import com.toprecipe.services.dataimport.FoodItemExporterTest;
 import com.toprecipe.services.dataimport.FoodItemImporterTest;
 import com.toprecipe.services.dataimport.RecipeExporterTest;
 import com.toprecipe.services.dataimport.RecipeImporterTest;
@@ -19,7 +20,8 @@ import com.toprecipe.services.fetcher.RecipeHtmlParserTest;
 		CategoryServiceTest.class, TopRecipeServiceTest.class,
 		PasswordHashServiceTest.class, UserServiceTest.class,
 		RecipeHtmlParserTest.class, ImageFetcherTest.class,
-		MediaFetcherTest.class, RecipeExporterTest.class })
+		MediaFetcherTest.class, RecipeExporterTest.class,
+		FoodItemExporterTest.class })
 public class ServiceTestSuite {
 
 }

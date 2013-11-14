@@ -46,6 +46,7 @@ public class FoodItemImporter {
 	private void createFoodItem(FoodItemJson foodItemJson) {
 		FoodItem item = new FoodItem();
 		item.setTitle(foodItemJson.getTitle());
+		item.setVegetarian(foodItemJson.isVegetarian());
 
 		Category c = categoryParser.parseForExistingCategory(foodItemJson
 				.getCategoryTree());

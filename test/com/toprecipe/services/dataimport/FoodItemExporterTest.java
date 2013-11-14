@@ -19,29 +19,25 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.toprecipe.config.AbstractContainerTest;
 import com.toprecipe.models.Category;
 import com.toprecipe.models.FoodItem;
-import com.toprecipe.models.Recipe;
 import com.toprecipe.repository.CategoryRepository;
 import com.toprecipe.repository.FoodItemRepository;
-import com.toprecipe.repository.RecipeRepository;
 import com.toprecipe.services.CategoryService;
 
-public class RecipeExporterTest extends AbstractContainerTest {
+public class FoodItemExporterTest extends AbstractContainerTest {
 
 	@Autowired
 	CategoryRepository categoryRepo;
 	@Autowired
-	CategoryService categoryService;
-	@Autowired
 	FoodItemRepository foodItemRepo;
 	@Autowired
-	RecipeRepository recipeRepo;
+	CategoryService categoryService;
 
 	@Autowired
 	private PlatformTransactionManager transactionManager;
 	private TransactionTemplate transactionTemplate;
 
 	@Autowired
-	RecipeExporter inTest;
+	FoodItemExporter inTest;
 
 	@Before
 	public void setup() {
@@ -53,7 +49,6 @@ public class RecipeExporterTest extends AbstractContainerTest {
 		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 			@Override
 			public void doInTransactionWithoutResult(TransactionStatus status) {
-				recipeRepo.deleteAll();
 				foodItemRepo.deleteAll();
 				categoryRepo.deleteAll();
 			}
@@ -61,39 +56,21 @@ public class RecipeExporterTest extends AbstractContainerTest {
 	}
 
 	@Test
-	public void testExport() throws JsonGenerationException,
+	public void basicPositiveTestCase() throws JsonGenerationException,
 			JsonMappingException, IOException {
-
 		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 			@Override
 			protected void doInTransactionWithoutResult(TransactionStatus status) {
 				Category rice = categoryService.createCategory("Rice");
-				Category biryani = categoryService.createCategory("Biryani",
-						rice);
-				categoryService.createCategory("Hyderabadi", biryani);
+				Category pulav = categoryService.createCategory("Pulav", rice);
+				categoryService.createCategory("Pulav", pulav);
 
 				FoodItem item = new FoodItem();
 
-				item.setTitle("Hyderabadi Chicken Dum Biryani");
-				item.addCategory(biryani);
+				item.setTitle("Peas Pulav");
+				item.addCategory(pulav);
+				item.setVegetarian(true);
 				foodItemRepo.save(item);
-
-				Recipe r = new Recipe();
-				r.setFlashVideo("flashVideo1");
-				r.setFoodItem(item);
-				r.setImage("image1");
-				r.setSourceUrl("sourceUrl1");
-				r.setTitle("title1");
-				r.setYouTubeVideo("youTubeVideo1");
-				recipeRepo.save(r);
-
-				r = new Recipe();
-				r.setFlashVideo("flashVideo2");
-				r.setImage("image2");
-				r.setSourceUrl("sourceUrl2");
-				r.setTitle("title2");
-				r.setYouTubeVideo("youTubeVideo2");
-				recipeRepo.save(r);
 			}
 		});
 
@@ -102,20 +79,9 @@ public class RecipeExporterTest extends AbstractContainerTest {
 		out.close();
 		String exported = out.toString();
 		System.out.println(exported);
+		assertTrue(exported.contains("\"title\" : \"Peas Pulav\""));
+		assertTrue(exported.contains("\"categoryTree\" : \"Rice->Pulav\""));
+		assertTrue(exported.contains("\"vegetarian\" : true"));
 
-		assertTrue(exported.contains("flashVideo1"));
-		assertTrue(exported.contains("image1"));
-		assertTrue(exported.contains("sourceUrl1"));
-		assertTrue(exported.contains("title1"));
-		assertTrue(exported.contains("youTubeVideo1"));
-		assertTrue(exported.contains("Hyderabadi Chicken Dum Biryani"));
-
-		assertTrue(exported.contains("flashVideo2"));
-		assertTrue(exported.contains("image2"));
-		assertTrue(exported.contains("sourceUrl2"));
-		assertTrue(exported.contains("title2"));
-		assertTrue(exported.contains("youTubeVideo2"));
-		assertTrue(exported.contains("Hyderabadi Chicken Dum Biryani"));
 	}
-
 }

@@ -40,6 +40,8 @@ public class FoodItem {
 	@OneToMany(mappedBy = "foodItem")
 	private List<Recipe> recipes = new ArrayList<>();
 
+	private boolean vegetarian;
+	
 	public Long getId() {
 		return id;
 	}
@@ -75,5 +77,13 @@ public class FoodItem {
 
 	public void setTopRecipe(Recipe topRecipe) {
 		this.topRecipe = topRecipe;
+	}
+
+	public boolean isVegetarian() {
+		return vegetarian;
+	}
+
+	public void setVegetarian(boolean vegetarian) {
+		this.vegetarian = vegetarian;
 	}
 }
