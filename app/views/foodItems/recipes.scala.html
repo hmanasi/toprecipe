@@ -1,4 +1,4 @@
-@(topRecipes: List[com.toprecipe.services.TopRecipe], categoryTitle: String)
+@(recipes: List[com.toprecipe.models.Recipe])
 
 @import helper._
 @import com.toprecipe.services.TopRecipe
@@ -8,43 +8,32 @@
     <script type="text/javascript">
     
     var recipes = {
-    		@for(recipe <- topRecipes) {
-    			@recipe.getFoodItemId():{title:"@recipe.getFoodItemTitle()",youTubeVideo:"@recipe.getYouTubeVideo",flashVideo:"@recipe.getFlashVideo", sourceUrl:"@recipe.getSourceUrl"},
+    		@for(recipe <- recipes) {
+    			@recipe.getId():{title:"@recipe.getTitle()",youTubeVideo:"@recipe.getYouTubeVideo",flashVideo:"@recipe.getFlashVideo", sourceUrl:"@recipe.getSourceUrl"},
     		}
     };
     </script>
     
 }
 
-@main("Fooditem list", scripts){
-	<div>
-		@form(com.toprecipe.controllers.routes.Recipes.newRecipe(categoryTitle)) {
-       		<button class="btn btn-lg btn-primary" type="submit">Add @categoryTitle Recipe</button>
-    	}
-	</div>
+@main("Recipes", scripts){
 	<div class=row>
-		@for(recipe <- topRecipes) {
+		@for(recipe <- recipes) {
 	    	<div class="col-sm-12 col-md-6">
 		    	<div class=thumbnail>
 		      		<div class="media">
-		        		<a id="recipe-image-container" class="pull-left" href="#" itemId="@recipe.getFoodItemId()">
+		        		<a id="recipe-image-container" class="pull-left" href="#" itemId="@recipe.getId()">
 		          			<img class="img-responsive" src="@routes.Assets.at(recipe.getImage())" style="width: 200px">
 		        		</a>
 		        		<div class="media-body">
-		          			<h4 class="media-heading">@recipe.getFoodItemTitle()</h4>
+		          			<h4 class="media-heading">@recipe.getTitle()</h4>
 		          			<div class="input-group">
 	                			<span class="input-group-btn">
 	                				<p>
                         			<button class="btn btn-primary" type="button" name="recipe-info-button" 
-                        				itemId="@recipe.getFoodItemId()">More Info</button>
+                        				itemId="@recipe.getId()">More Info</button>
         	        				</p>
-        	        				<button class="btn btn-primary" type="button" name="list-recipes-button" 
-                        				itemId="@recipe.getFoodItemId()">View All Recipes</button>
         	        			</span>
-        	        			<div>
-			  						@form(com.toprecipe.controllers.routes.CategoryBrowser.recipes(recipe.getFoodItemId()), 'id -> String.format ("list-recipes-form-%d", recipe.getFoodItemId())){
-			  						}
-		  						</div>
                 			</div>
 		        		</div>
 					</div>

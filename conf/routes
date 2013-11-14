@@ -13,11 +13,12 @@ POST    /users/                   @com.toprecipe.controllers.Users.createUser()
 
 # Recipes          
 GET     /recipes                  @com.toprecipe.controllers.Recipes.recipes()
-#GET     /recipes/new              @com.toprecipe.controllers.Recipes.newRecipe()
+#GET     /recipes/new             @com.toprecipe.controllers.Recipes.newRecipe()
 GET     /recipes/new/:categoryTitle @com.toprecipe.controllers.Recipes.newRecipe(categoryTitle: String)
 POST    /recipes/selectMedia      @com.toprecipe.controllers.Recipes.selectMedia()
 POST    /recipes                  @com.toprecipe.controllers.Recipes.createRecipe()
 POST    /recipes/:id/delete       @com.toprecipe.controllers.Recipes.deleteRecipe(id: Long)
+GET     /recipes/fooditem/:fooditem_id @com.toprecipe.controllers.CategoryBrowser.recipes(fooditem_id:Long)
 
 # Other admin actions
 GET     /admin/importCategories   @com.toprecipe.controllers.Admin.importCategories() 
@@ -33,5 +34,3 @@ GET     /categories/:category_title/fooditems    @com.toprecipe.controllers.Cate
 GET     /assets/img/glyphicons-halflings-white.png      controllers.Assets.at(path="/public", file="/images/glyphicons-halflings-white.png")
 GET     /assets/img/glyphicons-halflings.png            controllers.Assets.at(path="/public", file="/images/glyphicons-halflings.png")
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
-
