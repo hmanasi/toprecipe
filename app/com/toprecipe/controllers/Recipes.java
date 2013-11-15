@@ -52,16 +52,9 @@ public class Recipes extends Controller {
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.recipes.create.render(filledForm));
 		} else {
-			Recipe recipe = new Recipe();
 
-			RecipeBean recipeForm = filledForm.get();
-			recipe.setImage(recipeForm.getImage());
-			recipe.setTitle(recipeForm.getTitle());
-			recipe.setSourceUrl(recipeForm.getSourceUrl());
-			recipe.setYouTubeVideo(recipeForm.getYouTubeVideo());
-			recipe.setFlashVideo(recipeForm.getFlashVideo());
 			try {
-				recipeService.addRecipe(recipe, recipeForm.getCategoryTitle());
+				saveRecipe(filledForm.get());
 			} catch (IOException e) {
 				// TODO Find a better way to handle this exception
 				e.printStackTrace();
@@ -69,6 +62,16 @@ public class Recipes extends Controller {
 			}
 			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 		}
+	}
+
+	private void saveRecipe(RecipeBean recipeForm) throws IOException {
+		Recipe recipe = new Recipe();
+		recipe.setImage(recipeForm.getImage());
+		recipe.setTitle(recipeForm.getTitle());
+		recipe.setSourceUrl(recipeForm.getSourceUrl());
+		recipe.setYouTubeVideo(recipeForm.getYouTubeVideo());
+		recipe.setFlashVideo(recipeForm.getFlashVideo());
+		recipeService.addRecipe(recipe, recipeForm.getCategoryTitle());
 	}
 
 	public Result deleteRecipe(Long id) {
@@ -98,8 +101,36 @@ public class Recipes extends Controller {
 				}
 			});
 		} else {
-			return mediaFetcher.fetch(filledForm.field("sourceUrl").value())
-					.map(new Function<Media, Result>() {
+			RecipeBean recipeForm = filledForm.get();
+			String srcUrlLowercase = recipeForm.getSourceUrl().toLowerCase();
+			if (srcUrlLowercase.startsWith("http://www.youtube.com/watch?v=")) {
+				recipeForm.setYouTubeVideo("http://www.youtube.com/embed/"
+						+ recipeForm.getSourceUrl().substring(31));
+
+				try {
+					saveRecipe(recipeForm);
+				} catch (IOException e) {
+					// TODO Find a better way to handle this exception
+					e.printStackTrace();
+					return Promise.promise(new Function0<Result>() {
+						@Override
+						public Result apply() throws Throwable {
+							return internalServerError("Internal error processing request.");
+						}
+					});
+				}
+				return Promise.promise(new Function0<Result>() {
+					@Override
+					public Result apply() throws Throwable {
+
+						return redirect(com.toprecipe.controllers.routes.Recipes
+								.recipes());
+					}
+				});
+			}
+
+			return mediaFetcher.fetch(recipeForm.getSourceUrl()).map(
+					new Function<Media, Result>() {
 						public Result apply(Media media) {
 							return ok(views.html.recipes.selectMedia.render(
 									filledForm, media));
