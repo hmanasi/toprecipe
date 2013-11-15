@@ -72,9 +72,8 @@ public class RecipeImporter {
 		recipe.setImage(recipeJson.getImage());
 		recipe.setSourceUrl(recipeJson.getSourceUrl());
 		recipe.setYouTubeVideo(recipeJson.getYouTubeVideo());
-
+		recipe.setFlashVideo(recipeJson.getFlashVideo());
 		recipe.setFoodItem(foodItem);
 		recipeRepository.save(recipe);
 	}
-
 }
