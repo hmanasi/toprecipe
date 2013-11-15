@@ -1,9 +1,8 @@
 (function() {
 
 	recipeInfoClicked = function(e) {
-	
-	        e.preventDefault();
-	        var recipe = recipes[$(this).attr('itemId')];
+		e.preventDefault();
+		var recipe = recipes[$(this).attr('itemId')];
 		generateDialogMarkup(recipe.title, recipe.youTubeVideo,
 				recipe.sourceUrl);
 		$("#recipe-info-modal").modal();
