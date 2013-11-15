@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import com.toprecipe.models.Category;
 import com.toprecipe.models.FoodItem;
@@ -50,6 +51,19 @@ public class RecipeService {
 					.getImage());
 			recipe.setImage(RECIPE_IMAGE_URL_PATH + permanent.getName());
 		}
+
+		if (StringUtils.isEmpty(recipe.getImage())) {
+			recipe.setImage(null);
+		}
+
+		if (StringUtils.isEmpty(recipe.getYouTubeVideo())) {
+			recipe.setYouTubeVideo(null);
+		}
+
+		if (StringUtils.isEmpty(recipe.getFlashVideo())) {
+			recipe.setFlashVideo(null);
+		}
+
 		return recipeRepository.save(recipe);
 	}
 }

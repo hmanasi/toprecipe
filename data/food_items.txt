@@ -30,4 +30,12 @@
   "title" : "Onion Pakoda",
   "categoryTree" : "Appetizer",
   "vegetarian" : true
+}, {
+  "title" : "Butter chicken",
+  "categoryTree" : "Curry",
+  "vegetarian" : false
+}, {
+  "title" : "Egg Curry",
+  "categoryTree" : "Curry",
+  "vegetarian" : false
 } ]

@@ -19,14 +19,7 @@
   "flashVideo" : null,
   "foodItemTitle" : "Ukadiche Modak",
   "sourceUrl" : "http://www.madhurasrecipe.com/ganesh-festival/Ukadiche-Modak---Marathi-Recipe"
-}, {
-  "title" : "Curd Rice",
-  "image" : "",
-  "youTubeVideo" : "",
-  "flashVideo" : null,
-  "foodItemTitle" : "Curd Rice",
-  "sourceUrl" : "http://www.vahrehvah.com/curd-rice#.Un7rvqoRg0g"
-}, {
+} {
   "title" : "Rasam",
   "image" : "",
   "youTubeVideo" : "http://www.youtube.com/embed/04ARzB0Hpq4",
@@ -54,4 +47,18 @@
   "flashVideo" : null,
   "foodItemTitle" : "Onion Pakoda",
   "sourceUrl" : "http://www.madhurasrecipe.com/appetizers/Kanda-Bhaji"
+}, {
+  "title" : "Butter chicken",
+  "image" : "images/recipes/129386d6-0e0f-42f3-8a14-44a18c82600b.png",
+  "youTubeVideo" : null,
+  "flashVideo" : "http://www.youtube.com/v/tD9O-L2Xvzo",
+  "foodItemTitle" : "Butter chicken",
+  "sourceUrl" : "http://www.vahrehvah.com/butter-chicken#.UoW8LqoRg0g"
+}, {
+  "title" : "Egg Curry",
+  "image" : "images/recipes/b8e86308-2528-4e13-a320-57b35604883e.png",
+  "youTubeVideo" : null,
+  "flashVideo" : "http://www.youtube.com/v/7zMjCVwTjaU",
+  "foodItemTitle" : "Egg Curry",
+  "sourceUrl" : "http://www.vahrehvah.com/egg-curry#.UoXA46oRg0g"
 } ]

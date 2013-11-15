@@ -107,7 +107,7 @@ public class Admin extends Controller {
 					}
 				}
 			}
-			status.append("Categories exported.\n");
+			status.append("Food items exported.\n");
 		} else {
 			System.out.println("File not found" + file.getAbsolutePath());
 			return internalServerError("Did not find food items.");

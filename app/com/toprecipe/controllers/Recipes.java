@@ -1,5 +1,6 @@
 package com.toprecipe.controllers;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,7 @@ public class Recipes extends Controller {
 			recipe.setTitle(recipeForm.getTitle());
 			recipe.setSourceUrl(recipeForm.getSourceUrl());
 			recipe.setYouTubeVideo(recipeForm.getYouTubeVideo());
+			recipe.setFlashVideo(recipeForm.getFlashVideo());
 			try {
 				recipeService.addRecipe(recipe, recipeForm.getCategoryTitle());
 			} catch (IOException e) {
@@ -70,7 +72,14 @@ public class Recipes extends Controller {
 	}
 
 	public Result deleteRecipe(Long id) {
-		repo.delete(id);
+		Recipe r = repo.findOne(id);
+		if (r != null) {
+			if (r.getImage() != null) {
+				File f = new File("public/" + r.getImage());
+				f.delete();
+			}
+			repo.delete(id);
+		}
 		return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
 	}
 
