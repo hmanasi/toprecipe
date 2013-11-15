@@ -21,8 +21,8 @@ body {
 }
 
 .main-header > .container {
-	height: 118px;
-	padding-top: 2px;
+	height: 120px;
+	padding-top: 3px;
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
@@ -110,20 +110,11 @@ body {
   border-bottom-color: #2a6496;
 }
 
-
-
 .media {
 	padding-top: 100;
 }
 
-
-@media (min-width: 100px) {
-  .container > .top-navbar  > .navbar-right {
-    float: right !important;
-  }
-}
-
-@media (min-width: 200px) {
+@media (min-width: 104px) {
   .navbar-navtop {
     float: right;
     margin: 0;
@@ -214,12 +205,25 @@ body {
   background-color: #474480;
 }
 
-.main-navbar > .container > .navbar-collapse {
-	max-height: 480px;
-	background-color: #59578D;
-	overflow-y: hidden;
-	z-index: 99999;
+@media (min-width: 1200px) {
+  .container-collapse {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+  }
+  .container-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .container-collapse.in {
+    overflow-y: visible;
+  }
+  
 }
+
+
 
 a:hover,
 a:focus {
@@ -239,3 +243,5 @@ a:focus {
 .navbar-nav .open .dropdown-menu {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
   }
+  
+  
