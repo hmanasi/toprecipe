@@ -11,10 +11,6 @@
   "categoryTree" : "Festive",
   "vegetarian" : true
 }, {
-  "title" : "Curd Rice",
-  "categoryTree" : "Rice->Others",
-  "vegetarian" : true
-}, {
   "title" : "Rasam",
   "categoryTree" : "Daal",
   "vegetarian" : true
@@ -30,4 +26,12 @@
   "title" : "Onion Pakoda",
   "categoryTree" : "Appetizer",
   "vegetarian" : true
+}, {
+  "title" : "Butter chicken",
+  "categoryTree" : "Curry",
+  "vegetarian" : false
+}, {
+  "title" : "Egg Curry",
+  "categoryTree" : "Curry",
+  "vegetarian" : false
 } ]

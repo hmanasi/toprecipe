@@ -49,7 +49,7 @@ public class RecipeHtmlParser {
 		for (Element y : youtubeIframe) {
 			if (y.attr("src") != null
 					&& y.attr("src").startsWith("http://www.youtube.com/embed")) {
-				media.addYouTubeVideo(y.attr("src"));
+				media.addYouTubeVideo(y.attr("abs:src"));
 			}
 		}
 
