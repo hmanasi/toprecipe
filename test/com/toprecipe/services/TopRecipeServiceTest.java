@@ -85,6 +85,7 @@ public class TopRecipeServiceTest extends AbstractContainerTest {
 					recipeImporter.importRecipes(new ByteArrayInputStream(
 							testString.getBytes()));
 				} catch (IOException | RecipeImportException e) {
+					e.printStackTrace();
 					fail("Exception creating sample recipe.");
 				}
 
@@ -99,18 +100,20 @@ public class TopRecipeServiceTest extends AbstractContainerTest {
 
 	}
 
-	private String testString = "[ {"
-			+ "  \"title\" : \"Hyderabadi Chichen Dum Biryani\","
-			+ "  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\","
-			+ "  \"videoUrl\" : \"https://www.youtube-nocookie.com/embed/QjvQ7T01tLo\","
-			+ "  \"sourceUrl\" : \"http://www.vahrehvah.com/Hyderabadi+Chicken+Biryani:3144\","
-			+ "  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\""
-			+ "}, {"
-			+ "  \"title\" : \"Hyderabadi Chichen Dum Biryani\","
-			+ "  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\","
-			+ "  \"videoUrl\" : \"http://www.youtube.com/embed/rcCTwFpWxpE\","
-			+ "  \"sourceUrl\" : \"http://hellohyderabad.com/Recipes/Non-Vegetarian/Hyderabad-Dum-Biryani/\","
-			+ "  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\""
-			+ "} ]";
-
+	private String testString = "[ {" +
+			"  \"title\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\"," +
+			"  \"youTubeVideo\" : \"https://www.youtube-nocookie.com/embed/QjvQ7T01tLo\"," +
+			"  \"flashVideo\" : null," +
+			"  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"sourceUrl\" : \"http://www.vahrehvah.com/Hyderabadi+Chicken+Biryani:3144\"" +
+			"}, {" +
+			"  \"title\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"image\" : \"images/recipe/vah_chicken_biryani.jpg\"," +
+			"  \"youTubeVideo\" : \"http://www.youtube.com/embed/rcCTwFpWxpE\"," +
+			"  \"flashVideo\" : null," +
+			"  \"foodItemTitle\" : \"Hyderabadi Chicken Dum Biryani\"," +
+			"  \"sourceUrl\" : \"http://hellohyderabad.com/Recipes/Non-Vegetarian/Hyderabad-Dum-Biryani/\"" +
+			"} ]";
+	
 }
