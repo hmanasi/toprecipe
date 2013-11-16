@@ -12,7 +12,7 @@
 		var iframe = "<iframe width=\"537\" height=\"315\" src=\""
 				+ youTubeVideo
 				+ "\" frameborder=\"0\" allowfullscreen></iframe>";
-		var source = "<a href=\"" + sourceUrl
+		var source = "<a style=\"color:#428BCA\" href=\"" + sourceUrl
 				+ "\" target= \"_blank\"><h4>Go to original site</h4></a>"
 		$("#recipe-title").html(title);
 		$("#iframe").html(iframe);

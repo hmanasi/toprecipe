@@ -68,4 +68,81 @@
   "flashVideo" : null,
   "foodItemTitle" : "Butter chicken",
   "sourceUrl" : "http://www.youtube.com/watch?v=0E_1AuGVVfU"
+}, {
+  "title" : "Hyderabadi Chicken Dum Biryani",
+  "image" : "images/recipes/vah_chicken_biryani.jpg",
+  "youTubeVideo" : "https://www.youtube-nocookie.com/embed/QjvQ7T01tLo",
+  "flashVideo" : null,
+  "foodItemTitle" : "Hyderabadi Chicken Dum Biryani",
+  "sourceUrl" : "http://www.vahrehvah.com/Hyderabadi+Chicken+Biryani:3144"
+}, {
+  "title" : "Hyderabadi Chicken Dum Biryani",
+  "image" : "images/recipes/vah_chicken_biryani.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/rcCTwFpWxpE",
+  "flashVideo" : null,
+  "foodItemTitle" : "Hyderabadi Chicken Dum Biryani",
+  "sourceUrl" : "http://hellohyderabad.com/Recipes/Non-Vegetarian/Hyderabad-Dum-Biryani/"
+}, {
+  "title" : "Ukadiche Modak",
+  "image" : "images/recipes/95350011-f0b6-4547-a672-4fd84a4ee921.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/y2rwbI-AaII",
+  "flashVideo" : null,
+  "foodItemTitle" : "Ukadiche Modak",
+  "sourceUrl" : "http://www.madhurasrecipe.com/ganesh-festival/Ukadiche-Modak---Marathi-Recipe"
+}, {
+  "title" : "Rasam",
+  "image" : null,
+  "youTubeVideo" : "http://www.youtube.com/embed/04ARzB0Hpq4",
+  "flashVideo" : null,
+  "foodItemTitle" : "Rasam",
+  "sourceUrl" : "http://showmethecurry.com/soups/rasam-recipe.html"
+}, {
+  "title" : "Peas Pulav",
+  "image" : "public/images/recipes/6643c0bd-261e-449b-98c7-6e246bd17824.jpeg",
+  "youTubeVideo" : "http://www.youtube.com/embed/grV9sC5A9wY",
+  "flashVideo" : null,
+  "foodItemTitle" : "Peas Pulav",
+  "sourceUrl" : "http://www.madhurasrecipe.com/veg-rice/Peas-Pulav"
+}, {
+  "title" : "Kadhai Chicken",
+  "image" : "images/recipes/5bfae748-673a-49f3-b826-2d443c5f8b34.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/hwUVb-3T9xo?rel=0",
+  "flashVideo" : null,
+  "foodItemTitle" : "Kadhai Chicken",
+  "sourceUrl" : "http://www.madhurasrecipe.com/non-veg-curry/Kadhai-Chicken"
+}, {
+  "title" : "Onion Pakoda",
+  "image" : "images/recipes/39fb2832-e97a-433a-8f59-46af4ad2f7d4.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/RwdVsLPq9iM",
+  "flashVideo" : null,
+  "foodItemTitle" : "Onion Pakoda",
+  "sourceUrl" : "http://www.madhurasrecipe.com/appetizers/Kanda-Bhaji"
+}, {
+  "title" : "Butter chicken",
+  "image" : "images/recipes/129386d6-0e0f-42f3-8a14-44a18c82600b.png",
+  "youTubeVideo" : null,
+  "flashVideo" : "http://www.youtube.com/v/tD9O-L2Xvzo",
+  "foodItemTitle" : "Butter chicken",
+  "sourceUrl" : "http://www.vahrehvah.com/butter-chicken#.UoW8LqoRg0g"
+}, {
+  "title" : "Egg Curry",
+  "image" : "images/recipes/b8e86308-2528-4e13-a320-57b35604883e.png",
+  "youTubeVideo" : null,
+  "flashVideo" : "http://www.youtube.com/v/7zMjCVwTjaU",
+  "foodItemTitle" : "Egg Curry",
+  "sourceUrl" : "http://www.vahrehvah.com/egg-curry#.UoXA46oRg0g"
+}, {
+  "title" : "Butter chicken",
+  "image" : null,
+  "youTubeVideo" : "http://www.youtube.com/embed/0E_1AuGVVfU",
+  "flashVideo" : null,
+  "foodItemTitle" : "Butter chicken",
+  "sourceUrl" : "http://www.youtube.com/watch?v=0E_1AuGVVfU"
+}, {
+  "title" : "Chakali",
+  "image" : "images/recipes/1d692f3b-14da-4fc3-b17c-2d4323ee3726.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/9GbGFLTzOGA",
+  "flashVideo" : null,
+  "foodItemTitle" : "Chakali",
+  "sourceUrl" : "http://www.madhurasrecipe.com/diwali-recipes/Chakali---Tastes-good-as-Bhajani-Chakali"
 } ]
