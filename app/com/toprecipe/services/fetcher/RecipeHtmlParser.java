@@ -14,10 +14,9 @@ import org.springframework.stereotype.Service;
 public class RecipeHtmlParser {
 
 	private ImageFilter imageFilter;
-	
+
 	@Autowired
-	public void setImageFilter (ImageFilter imageFilter)
-	{
+	public void setImageFilter(ImageFilter imageFilter) {
 		this.imageFilter = imageFilter;
 	}
 
@@ -40,15 +39,24 @@ public class RecipeHtmlParser {
 		}
 
 		for (Element f : flash) {
-			if (f.attr("type") != null
+			Elements param = flash.select("param[name$=movie]");
+			Elements embed = flash.select("embed");
+
+			if (param != null && param.hasAttr("abs:value")){
+				media.addFlashVideos(param.attr("abs:value"));
+			}else if (f.hasAttr("type")
 					&& f.attr("type").equals("application/x-shockwave-flash")) {
 				media.addFlashVideos(f.attr("abs:data"));
-			}
+			} else if (embed != null && embed.hasAttr("type")
+					&& f.attr("type").equals("application/x-shockwave-flash")) {
+				media.addFlashVideos(embed.attr("abs:src"));
+			} 
 		}
 
 		for (Element y : youtubeIframe) {
-			if (y.attr("src") != null
-					&& y.attr("src").startsWith("http://www.youtube.com/embed")) {
+			if (y.hasAttr("abs:src")
+					&& y.attr("abs:src").startsWith(
+							"http://www.youtube.com/embed")) {
 				media.addYouTubeVideo(y.attr("abs:src"));
 			}
 		}

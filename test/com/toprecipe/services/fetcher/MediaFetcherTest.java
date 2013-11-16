@@ -1,5 +1,6 @@
 package com.toprecipe.services.fetcher;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -14,14 +15,17 @@ public class MediaFetcherTest {
 	private MediaFetcher inTest = new MediaFetcher();
 
 	@Before
-	public void setup() {
+	public void setup() throws IOException {
+		File imageFolder = new File ("/tmp/images");
+		imageFolder.mkdirs();
+		imageFolder.deleteOnExit();
 		ImageFetcher imageFetcher = new ImageFetcher();
 		inTest.setImageFetcher(imageFetcher);
 		RecipeHtmlParser parser = new RecipeHtmlParser();
 		ImageFilter imageFilter = new ImageFilter();
 		parser.setImageFilter(imageFilter);
 		imageFetcher.setImageFilter(imageFilter);
-		imageFetcher.setImageFolder("/tmp/images");
+		imageFetcher.setImageFolder(imageFolder.getCanonicalPath());
 		inTest.setRecipeHtmlParser(parser);
 	}
 
@@ -48,5 +52,5 @@ public class MediaFetcherTest {
 		for (String video : m.getYouTubeVideos()) {
 			System.out.println(String.format("Video: %s", video));
 		}
-	}
+	}	
 }

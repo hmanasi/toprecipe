@@ -46,22 +46,22 @@ public class RecipeService {
 			recipe.setFoodItem(foodItem);
 		}
 
+		if (StringUtils.isEmpty(recipe.getImage())) {
+			recipe.setImage(null);
+		}
+		
+		if (StringUtils.isEmpty(recipe.getYouTubeVideo())) {
+			recipe.setYouTubeVideo(null);
+		}
+		
+		if (StringUtils.isEmpty(recipe.getFlashVideo())) {
+			recipe.setFlashVideo(null);
+		}
+		
 		if (recipe.getImage() != null) {
 			File permanent = imageFileHelper.makeImagePermanent(recipe
 					.getImage());
 			recipe.setImage(RECIPE_IMAGE_URL_PATH + permanent.getName());
-		}
-
-		if (StringUtils.isEmpty(recipe.getImage())) {
-			recipe.setImage(null);
-		}
-
-		if (StringUtils.isEmpty(recipe.getYouTubeVideo())) {
-			recipe.setYouTubeVideo(null);
-		}
-
-		if (StringUtils.isEmpty(recipe.getFlashVideo())) {
-			recipe.setFlashVideo(null);
 		}
 
 		return recipeRepository.save(recipe);
