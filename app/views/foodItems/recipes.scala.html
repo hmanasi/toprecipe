@@ -22,9 +22,7 @@
 	    	<div class="col-sm-12 col-md-6">
 		    	<div class=thumbnail>
 		      		<div class="media">
-		        		<a id="recipe-image-container" class="pull-left" href="#" itemId="@recipe.getId()">
-		          			<img class="img-responsive" src="@routes.Assets.at(recipe.getImage())" style="width: 200px">
-		        		</a>
+		        		@media(recipe.getId(),recipe.getImage(), recipe.getYouTubeVideo(), recipe.getFlashVideo(), "pull-left")
 		        		<div class="media-body">
 		          			<h4 class="media-heading">@recipe.getTitle()</h4>
 		          			<div class="input-group">

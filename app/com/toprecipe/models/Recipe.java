@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.util.StringUtils;
+
 import play.data.validation.Constraints.Required;
 
 @Entity
@@ -22,22 +24,22 @@ public class Recipe {
 	private Long id;
 
 	@Required
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String title;
 
 	private String image;
 
-	@Column(name="you_tube_video")
+	@Column(name = "you_tube_video")
 	private String youTubeVideo;
 
-	@Column(name="flash_video")
+	@Column(name = "flash_video")
 	private String flashVideo;
-	
-	@Column(name="source_url")
+
+	@Column(name = "source_url")
 	private String sourceUrl;
 
 	@ManyToOne
-	@JoinColumn(name="food_item_id")
+	@JoinColumn(name = "food_item_id")
 	private FoodItem foodItem;
 
 	public Long getId() {
@@ -96,4 +98,23 @@ public class Recipe {
 		this.flashVideo = flashVideo;
 	}
 
+	public boolean isVideoRecipe() {
+		return isYouTubeRecipe() || isFlashRecipe();
+	}
+
+	public boolean isFlashRecipe() {
+		return !StringUtils.isEmpty(getFlashVideo());
+	}
+
+	public boolean isYouTubeRecipe() {
+		return !StringUtils.isEmpty(getYouTubeVideo());
+	}
+
+	public String getVideoUrl() {
+		if (isYouTubeRecipe()) {
+			return getYouTubeVideo();
+		} else {
+			return getFlashVideo();
+		}
+	}
 }
