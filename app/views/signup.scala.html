@@ -2,7 +2,10 @@
 
 @main("Sign up"){
 	@helper.form(com.toprecipe.controllers.routes.Users.createUser()) {
-		<h1>Sign Up</h1>
+	
+	<div class= "col-md-4">
+	<form class="form-signup">
+		<h3>Sign Up</h3>
 
 		@if(form.hasGlobalErrors) {
     		<p class="error">
@@ -11,31 +14,34 @@
 		}
 
 		<p>
-			<input type="email" name="email" placeholder="Email" value="@form("email").value">
+			<input type="email" name="email" class="form-control" placeholder="Email address" autofocus placeholder="Email" value="@form("email").value">
 		</p>
 		@for(error <- form("email").errors) {
  		   <p>@error.message</p>
 		}
 		<p>
-			<input type="repeatEmail" name="repeatEmail" placeholder="Re-enter Email" value="@form("repeatEmail").value">
+			<input type="repeatEmail" name="repeatEmail" class="form-control"  placeholder="Re-enter Email address" value="@form("repeatEmail").value">
 		</p>
 		@for(error <- form("repeatEmail").errors) {
  		   <p>@error.message</p>
 		}
 		<p>
-			<input type="password" name="password" placeholder="Password" value="@form("password").value">
+			<input type="password" name="password" class="form-control"  placeholder="Password" value="@form("password").value">
 		</p>
 		@for(error <- form("password").errors) {
  		   <p>@error.message</p>
 		}		
 		<p>
-			<input type="password" name="repeatPassword" placeholder="Reenter Password" value="@form("repeatPassword").value">
+			<input type="password" name="repeatPassword" class="form-control"  placeholder="Re-enter Password" value="@form("repeatPassword").value">
 		</p>
 		@for(error <- form("repeatPassword").errors) {
  		   <p>@error.message</p>
 		}		
 		<p>
-			<button type="submit">Sign up</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" style="width: 80px; padding-bottom: 5px; padding-top: 5px">Sign up</button>
 		</p>
+		
+		</form>
+      </div>
 	}
 }

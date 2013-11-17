@@ -2,7 +2,10 @@
 
 @main("Fooditem list"){
 	@helper.form(com.toprecipe.controllers.routes.Application.authenticate()) {
-		<h1>Sign in</h1>
+	
+	<div class= "col-md-4">
+	<form class="form-signin">
+		<h2 class="form-signin-heading">Please sign in</h2>
 
 		@if(form.hasGlobalErrors) {
     		<p class="error">
@@ -11,23 +14,30 @@
 		}
 		
 		<p>
-			<input type="email" name="email" placeholder="Email" value="@form("email").value">
+			<input type="email" class="form-control" placeholder="Email address" autofocus value="@form("email").value">
 		</p>
 		@for(error <- form("email").errors) {
  		   <p>@error.message</p>
 		}
 		<p>
-			<input type="password" name="password" placeholder="Password">
+			<input type="password" class="form-control" placeholder="Password">
 		</p>
 		@for(error <- form("password").errors) {
  		   <p>@error.message</p>
 		}		
 		<p>
-			<button type="submit">Login</button>
+			<label class="checkbox"><input type="checkbox" value="remember-me"> Remember me</label>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" style="width: 80px; padding-bottom: 5px; padding-top: 5px">Sign in</button>
 		</p>
 		
 	}
 		<p>
-			<a href="@com.toprecipe.controllers.routes.Users.signup()" >Sign up</a>
+			<a style="color:#428BCA;" href="@com.toprecipe.controllers.routes.Users.signup()" >Sign up</a>
 		</p>
+		
+      </form>
+      </div>
+
+    </div>
+		
 }
