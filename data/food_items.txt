@@ -38,4 +38,92 @@
   "title" : "Chakali",
   "categoryTree" : "Festive",
   "vegetarian" : true
+}, {
+  "title" : "Chinche che saar (Tamarind soup) ",
+  "categoryTree" : "Soup",
+  "vegetarian" : false
+}, {
+  "title" : "Chinche che saar (Tamarind soup)",
+  "categoryTree" : "Soup",
+  "vegetarian" : false
+}, {
+  "title" : "Sweet Corn Vegetable Soup",
+  "categoryTree" : "Soup",
+  "vegetarian" : false
+}, {
+  "title" : "Vegetable Raita",
+  "categoryTree" : "Salad/Raita",
+  "vegetarian" : false
+}, {
+  "title" : "Cilantro Mint Raita",
+  "categoryTree" : "Salad/Raita",
+  "vegetarian" : false
+}, {
+  "title" : "Aloo Naan",
+  "categoryTree" : "Bread->Naan",
+  "vegetarian" : false
+}, {
+  "title" : "Naan",
+  "categoryTree" : "Bread->Naan",
+  "vegetarian" : false
+}, {
+  "title" : "Bajre ki roti",
+  "categoryTree" : "Bread->Roti",
+  "vegetarian" : false
+}, {
+  "title" : "Phulka roti",
+  "categoryTree" : "Bread->Roti",
+  "vegetarian" : false
+}, {
+  "title" : "Rumali roti",
+  "categoryTree" : "Bread->Roti",
+  "vegetarian" : false
+}, {
+  "title" : "Aloo Paratha",
+  "categoryTree" : "Bread->Paratha",
+  "vegetarian" : false
+}, {
+  "title" : "Laccha Paratha",
+  "categoryTree" : "Bread->Paratha",
+  "vegetarian" : false
+}, {
+  "title" : "Bhatura",
+  "categoryTree" : "Bread->Others",
+  "vegetarian" : false
+}, {
+  "title" : "Palak Paneer",
+  "categoryTree" : "Veggi",
+  "vegetarian" : false
+}, {
+  "title" : "Bharwan Bhindi",
+  "categoryTree" : "Veggi",
+  "vegetarian" : false
+}, {
+  "title" : "Vegetable Jalfrezi",
+  "categoryTree" : "Veggi",
+  "vegetarian" : false
+}, {
+  "title" : "Maharashtrian Varan",
+  "categoryTree" : "Daal",
+  "vegetarian" : false
+}, {
+  "title" : "Surali chi vadi/Khandvi",
+  "categoryTree" : "Snack",
+  "vegetarian" : false
+}, {
+  "title" : "Bhel Puri",
+  "categoryTree" : "Snack",
+  "vegetarian" : false
+}, {
+  "title" : "Pineapple Shrikhand",
+  "categoryTree" : "Dessert",
+  "vegetarian" : false
+}, {
+  "title" : "Gulab Jamun",
+  "categoryTree" : "Dessert",
+  "vegetarian" : false
+}, {
+  "title" : "Samosa",
+  "categoryTree" : "Appetizer",
+  "vegetarian" : false
 } ]
