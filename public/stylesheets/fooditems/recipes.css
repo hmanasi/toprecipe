@@ -1,0 +1,7 @@
+.recipe-display .recipe-image,.recipe-display .recipe-body {
+	width: 50%;
+}
+
+.recipe-display .recipe-body {
+	padding:4px;
+}

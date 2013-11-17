@@ -2,6 +2,9 @@ package com.toprecipe.controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,7 +36,22 @@ public class Recipes extends Controller {
 	static Form<RecipeBean> recipeForm = Form.form(RecipeBean.class);
 
 	public Result recipes() {
-		return ok(views.html.recipes.index.render(repo.findAll()));
+		List<List<Recipe>> array = new ArrayList<>();
+		array.add(new ArrayList<Recipe>());
+		array.add(new ArrayList<Recipe>());
+		array.add(new ArrayList<Recipe>());
+		array.add(new ArrayList<Recipe>());
+		
+		Iterator<Recipe> recipes = repo.findAll().iterator();
+		
+		int i = 0;
+		
+		while (recipes.hasNext()) {
+			array.get(i%4).add(recipes.next());
+			i++;
+		}
+		
+		return ok(views.html.recipes.index.render(array));
 	}
 	
 	public Result admin() {

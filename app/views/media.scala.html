@@ -1,4 +1,4 @@
-@(id: Long, image: String, youTubeVideo: String, flashVideo:String, className:String)
+@(id: Long, image: String, youTubeVideo: String, flashVideo:String, className:String)(body:Html=Html(""))
 
 @import org.springframework.util.StringUtils;
 
@@ -9,18 +9,18 @@
 @isVideoRecipe=@{isYouTubeRecipe|isFlashRecipe}
 
 @if(hasImage){
-	<a id="recipe-image-container" class="@className" href="#" itemId="@id">
-		<img class="img-responsive" src="@routes.Assets.at(image)"
-		style="width: 200px">
+	<a id="recipe-image-container" href="#" itemId="@id">
+		<img class="img-responsive @className" src="@routes.Assets.at(image)">
 	</a>
 }else{
-<div>
-	<i class="fa fa-picture-o fa-5x @className"></i>
-</div>
+	<div class="@className" >
+		<i class="fa fa-picture-o fa-5x"></i>
+	</div>
 }
 
+<div class="media-body recipe-body">
 @if(isVideoRecipe){
-<div>
 	<i class="fa fa-video-camera"></i>
-</div>
 } 
+@body
+</div>

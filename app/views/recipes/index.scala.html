@@ -1,4 +1,4 @@
-@(recipes: Iterable[com.toprecipe.models.Recipe])
+@(recipeArrays: List[List[com.toprecipe.models.Recipe]])
 
 @import helper._
 @import com.toprecipe.models.Recipe
@@ -9,20 +9,21 @@
 
 @main("Recipe list", scripts){
   	<div class="row">
-        @for(recipe <- recipes.iterator()) {
-  			<div class="col-sm-6 col-md-3">
-            	<div class="thumbnail">
-            	@media(recipe.getId(),recipe.getImage(), recipe.getYouTubeVideo(), recipe.getFlashVideo(), "")
-            		
-                <h3>@recipe.getTitle()</h3>
+  		@for(recipeList <- recipeArrays) {
+  			<div class="col-md-3">
+        		@for(recipe <- recipeList) {
+	            	<div class="thumbnail">
+	            	@media(recipe.getId(),recipe.getImage(), recipe.getYouTubeVideo(), recipe.getFlashVideo(), ""){
+		                <h3>@recipe.getTitle()</h3>
                 	
-             	</div>
+		             	</div>
+					  	<div>
+						  @form(com.toprecipe.controllers.routes.Recipes.deleteRecipe(recipe.getId()), 'id -> String.format ("deleteForm-%d", recipe.getId())){
+						  }
+				  		</div>
+			  		}
+		        }
 		  	</div>
-		  
-		  	<div>
-			  @form(com.toprecipe.controllers.routes.Recipes.deleteRecipe(recipe.getId()), 'id -> String.format ("deleteForm-%d", recipe.getId())){
-			  }
-		  	</div>
-        }
+		}
 	</div>
 }
