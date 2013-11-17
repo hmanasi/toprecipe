@@ -30,15 +30,17 @@ public class RecipeHtmlParserTest {
 
 	@Test
 	public void testWithFlashObjectFormat2() throws IOException {
-		Media media = inTest.parseHtml(
-				new ByteArrayInputStream(flashMediaFormat2.getBytes()),
-				"http://showmethecurry.com/appetizers/chakli-chakri-murukku.html");
+		Media media = inTest
+				.parseHtml(
+						new ByteArrayInputStream(flashMediaFormat2.getBytes()),
+						"http://showmethecurry.com/appetizers/chakli-chakri-murukku.html");
 
-		assertTrue(media.getFlashVideos().contains(
-				"http://www.youtube.com/v/EkPG3rx_Ai8?fs=1&hl=en_US&rel=0&hd=1&color1=0xe1600f&color2=0xfebd01"));
+		assertTrue(media
+				.getFlashVideos()
+				.contains(
+						"http://www.youtube.com/v/EkPG3rx_Ai8?fs=1&hl=en_US&rel=0&hd=1&color1=0xe1600f&color2=0xfebd01"));
 	}
 
-	
 	@Test
 	public void testWithYoutubeUrl() throws IOException {
 		Media media = inTest.parseHtml(
@@ -50,16 +52,25 @@ public class RecipeHtmlParserTest {
 	}
 
 	@Test
+	public void testWithYoutubeUrlFormat2() throws IOException {
+		Media media = inTest
+				.parseHtml(new ByteArrayInputStream(youTubeMedia2.getBytes()),
+						"http://video.sanjeevkapoor.com/Bharwan-Bhindi-Video-Recipe.aspx");
+
+		assertTrue(media.getYouTubeVideos().contains(
+				"http://www.youtube.com/v/MduYrM_-Ep8?rel=0&autoplay=1"));
+	}
+
+	@Test
 	public void testWithYoutubeUrlMalformed() throws IOException {
-		Media media = inTest.parseHtml(
-				new ByteArrayInputStream(youTubeMediaMalformed.getBytes()),
+		Media media = inTest.parseHtml(new ByteArrayInputStream(
+				youTubeMediaMalformed.getBytes()),
 				"http://www.madhurasrecipe.com/appetizers/Gobi-Manchurian");
 
 		assertTrue(media.getYouTubeVideos().contains(
 				"http://www.youtube.com/embed/M4eXMio-Vdk?rel=0"));
 	}
 
-	
 	@Test
 	public void testWithImage() throws IOException {
 		Media media = inTest.parseHtml(
@@ -100,21 +111,23 @@ public class RecipeHtmlParserTest {
 			+ "    <a class=\"selected-star\" href=\"#\">*</a>" + "</div>" + ""
 			+ "</BODY>" + "</HTML>";
 
-	private String flashMediaFormat2 = 
-			"<p>" +
-					"	<object width=\"640\" height=\"385\">" +
-					"		<param value=\"http://www.youtube.com/v/EkPG3rx_Ai8?fs=1&amp;hl=en_US&amp;rel=0&amp;hd=1&amp;color1=0xe1600f&amp;color2=0xfebd01\" name=\"movie\">" +
-					"		<param value=\"true\" name=\"allowFullScreen\"><param value=\"always\" name=\"allowscriptaccess\">" +
-					"		<embed width=\"640\" height=\"385\" allowfullscreen=\"true\" allowscriptaccess=\"always\" type=\"application/x-shockwave-flash\" src=\"http://www.youtube.com/v/EkPG3rx_Ai8?fs=1&amp;hl=en_US&amp;rel=0&amp;hd=1&amp;color1=0xe1600f&amp;color2=0xfebd01\">" +
-					"	</object>" +
-					"</p>";
-	
+	private String flashMediaFormat2 = "<p>"
+			+ "	<object width=\"640\" height=\"385\">"
+			+ "		<param value=\"http://www.youtube.com/v/EkPG3rx_Ai8?fs=1&amp;hl=en_US&amp;rel=0&amp;hd=1&amp;color1=0xe1600f&amp;color2=0xfebd01\" name=\"movie\">"
+			+ "		<param value=\"true\" name=\"allowFullScreen\"><param value=\"always\" name=\"allowscriptaccess\">"
+			+ "		<embed width=\"640\" height=\"385\" allowfullscreen=\"true\" allowscriptaccess=\"always\" type=\"application/x-shockwave-flash\" src=\"http://www.youtube.com/v/EkPG3rx_Ai8?fs=1&amp;hl=en_US&amp;rel=0&amp;hd=1&amp;color1=0xe1600f&amp;color2=0xfebd01\">"
+			+ "	</object>" + "</p>";
+
 	private String youTubeMedia = "<div class=\"clear\"></div>"
 			+ "<div class=\"comment\" style=\"margin:10px 22px 20px 0px!important;\">"
 			+ "    <a href=\"#abc\"> Write comment</a>"
 			+ "   |  <a href=\"http://www.madhurasrecipe.com/subscribe-for-newsletter\">Subscribe For Newsletter</a>"
 			+ "</div>"
 			+ " <div id=\"frame\"> <iframe width=\"520\" height=\"330\" src=\"http://www.youtube.com/embed/M4eXMio-Vdk?rel=0\" frameborder=\"0\" allowfullscreen></iframe></div>";
+
+	private String youTubeMedia2 =
+	"<div id=\"ctl00_ContentPlaceHolder1_VideoHeading\"><div class=\"heading\"><span itemprop=\"name\">Bharwan Bhindi</span></div></div>\n"
+			+ "<div style=\"border:solid 1px #ccc;z-index:-1000\" id=\"videoimgarea\" class=\"videoimgarea\"><iframe src=\"http://www.youtube.com/v/MduYrM_-Ep8?rel=0&amp;autoplay=1\" frameborder=\"0\" height=\"275px\" width=\"423px\"></iframe></div>";
 
 	private String youTubeMediaMalformed = "<div class=\"clear\"></div>"
 			+ "<div class=\"comment\" style=\"margin:10px 22px 20px 0px!important;\">"
@@ -123,7 +136,6 @@ public class RecipeHtmlParserTest {
 			+ "</div>"
 			+ " <div id=\"frame\"> <iframe width=\"520\" height=\"330\" src=\"//www.youtube.com/embed/M4eXMio-Vdk?rel=0\" frameborder=\"0\" allowfullscreen></iframe></div>";
 
-	
 	private String imageMedia = "<div class=\"recipe-img\">"
 			+ "        <img src=\"http://www.madhurasrecipe.com/media/gobi_manchurian_1.jpg\" height=\"249\" width=\"317\" style=\"text-align:left;\"  />"
 			+ "        <img src=\"http://www.madhurasrecipe.com/media/gobi_manchurian_2.jpg\" height=\"24\" width=\"31\" style=\"text-align:left;\"  />"

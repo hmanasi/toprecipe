@@ -47,6 +47,7 @@
     create table food_item (
         id bigint not null,
         title varchar(255) not null,
+        vegetarian boolean not null,
         top_recipe_id bigint,
         primary key (id)
     );

@@ -15,8 +15,8 @@
         <button class="btn btn-lg btn-primary" type="submit">Create</button>
     }  
     
-    @form(com.toprecipe.controllers.routes.Recipes.recipes()) {
-       <button class="btn btn-lg btn-primary" type="submit">View recipes</button>
+    @form(com.toprecipe.controllers.routes.CategoryBrowser.foodItems(recipeForm.get().getCategoryTitle())) {
+       <button class="btn btn-lg btn-primary" type="submit">cancel</button>
     }
 }
 

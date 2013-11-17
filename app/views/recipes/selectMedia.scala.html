@@ -69,7 +69,7 @@
 	        @inputText(recipeForm("categoryTitle"), 'class -> "form-control", 'placeholder -> "Category Title")
 		}
 		
-		@form(com.toprecipe.controllers.routes.Application.index(), 'id -> "recipe-list-form") {
+		@form(com.toprecipe.controllers.routes.CategoryBrowser.foodItems(recipeForm.get().getCategoryTitle()), 'id -> "cancel-handler-form") {
 		}
 	</div>	
 }

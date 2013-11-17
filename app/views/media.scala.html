@@ -2,32 +2,25 @@
 
 @import org.springframework.util.StringUtils;
 
+@hasImage=@{!StringUtils.isEmpty (image)}
+
 @isYouTubeRecipe=@{!StringUtils.isEmpty (youTubeVideo)}
 @isFlashRecipe=@{!StringUtils.isEmpty (flashVideo)}
 @isVideoRecipe=@{isYouTubeRecipe|isFlashRecipe}
 
-@if(isVideoRecipe){
-
-	@if(isYouTubeRecipe){
-		<div class="@className">
-			<iframe frameborder="0" width="250" height="200" allowfullscreen="" src="@youTubeVideo"></iframe>
-		</div>
-	}else {
-		@if(isFlashRecipe){
-			<div class="@className">
-				<object width="250" height="200" data="@flashVideo" type="application/x-shockwave-flash">
-					<param value="flashVideo" name="movie">
-					<param value="true" name="allowFullScreen">
-					<param value="always" name="allowscriptaccess">
-					<param value="transparent" name="wmode">
-				</object>
-			</div>
-		}
-	}
-
-} else 	{
+@if(hasImage){
 	<a id="recipe-image-container" class="@className" href="#" itemId="@id">
 		<img class="img-responsive" src="@routes.Assets.at(image)"
 		style="width: 200px">
 	</a>
+}else{
+<div>
+	<i class="fa fa-picture-o fa-5x @className"></i>
+</div>
 }
+
+@if(isVideoRecipe){
+<div>
+	<i class="fa fa-video-camera"></i>
+</div>
+} 

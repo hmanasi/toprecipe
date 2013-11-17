@@ -9,7 +9,7 @@
     
     	var recipes = {
     		@for(recipe <- topRecipes) {
-    			@recipe.getFoodItemId():{title:"@recipe.getFoodItemTitle()",youTubeVideo:"@recipe.getYouTubeVideo",flashVideo:"@recipe.getFlashVideo", sourceUrl:"@recipe.getSourceUrl"},
+    			@recipe.getFoodItemId():{title:"@recipe.getFoodItemTitle()",image:"@routes.Assets.at(recipe.getImage())",youTubeVideo:"@recipe.getYouTubeVideo",flashVideo:"@recipe.getFlashVideo", sourceUrl:"@recipe.getSourceUrl"},
     		}
     	};
     </script>
@@ -58,7 +58,7 @@
         			<h3><div id="recipe-title"></div></h3>
    				</div>
    				<div class="modal-body">
-   					<div id="iframe"></div>
+   					<div id="media-markup"></div>
    					<div id="source"></div>
    				</div>
    				<div class="modal-footer">

@@ -60,7 +60,8 @@ public class Recipes extends Controller {
 				e.printStackTrace();
 				return internalServerError("Internal error processing request.");
 			}
-			return redirect(com.toprecipe.controllers.routes.Recipes.recipes());
+			return redirect(com.toprecipe.controllers.routes.CategoryBrowser
+					.foodItems(filledForm.get().getCategoryTitle()));
 		}
 	}
 

@@ -44,7 +44,7 @@
 	
 	cancelRecipe = function (e)
 	{
-		$('#recipe-list-form').submit();
+		$('#cancel-handler-form').submit();
 	}
 	
 	$(".select-image-button").click (selectImage);
