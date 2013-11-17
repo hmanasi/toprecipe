@@ -130,4 +130,8 @@
   "title" : "Onion Pakora",
   "categoryTree" : "Appetizer",
   "vegetarian" : true
+}, {
+  "title" : "Tomato Soup",
+  "categoryTree" : "Soup",
+  "vegetarian" : true
 } ]
