@@ -15,7 +15,12 @@
             	@media(recipe.getId(),recipe.getImage(), recipe.getYouTubeVideo(), recipe.getFlashVideo(), "")
             		
                 <h3>@recipe.getTitle()</h3>
-                	
+                	<div class="input-group">
+	                	<span class="input-group-btn">
+    	                	<button class="btn btn-primary" type="button" name="delete-button" recipeId="@recipe.getId()">Delete</button>
+                        	<button class="btn btn-primary" type="button" name="edit-button" recipeId="@recipe.getId()">Edit</button>
+        	        	</span>
+                	</div>
              	</div>
 		  	</div>
 		  

@@ -35,6 +35,10 @@ public class Recipes extends Controller {
 	public Result recipes() {
 		return ok(views.html.recipes.index.render(repo.findAll()));
 	}
+	
+	public Result admin() {
+		return ok(views.html.recipes.admin.render(repo.findAll()));
+	}
 
 	public Result newRecipe() {
 		return ok(views.html.recipes.create.render(recipeForm));
@@ -65,6 +69,8 @@ public class Recipes extends Controller {
 		}
 	}
 
+	
+	
 	private void saveRecipe(RecipeBean recipeForm) throws IOException {
 		Recipe recipe = new Recipe();
 		recipe.setImage(recipeForm.getImage());
