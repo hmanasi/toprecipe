@@ -134,4 +134,8 @@
   "title" : "Tomato Soup",
   "categoryTree" : "Soup",
   "vegetarian" : true
+}, {
+  "title" : "Boondi Raita",
+  "categoryTree" : "Salad/Raita",
+  "vegetarian" : true
 } ]

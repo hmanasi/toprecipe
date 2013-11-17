@@ -313,4 +313,46 @@
   "flashVideo" : null,
   "foodItemTitle" : "Tomato Soup",
   "sourceUrl" : "http://maunikagowardhan.co.uk/curry/maharashtrian-tomato-saar-spicy-tomato-soup-with-curry-leaves-and-chillies/"
+}, {
+  "title" : "Vegetable Raita",
+  "image" : "images/recipes/1c5005cf-6cfb-4cc8-8f93-6b9357554156.jpg",
+  "youTubeVideo" : null,
+  "flashVideo" : null,
+  "foodItemTitle" : "Vegetable Raita",
+  "sourceUrl" : "http://www.evernewrecipes.com/sauces-and-spices-recipes/vegetable-raita-recipe.html"
+}, {
+  "title" : "Vegetable Raita",
+  "image" : "images/recipes/eaef59e1-3123-4210-8ac1-15adc923c196.jpg",
+  "youTubeVideo" : null,
+  "flashVideo" : null,
+  "foodItemTitle" : "Vegetable Raita",
+  "sourceUrl" : "http://nishamadhulika.com/en/111-mix_vegetable_rayta.html"
+}, {
+  "title" : "Vegetable Raita",
+  "image" : "images/recipes/d841feed-0d49-4f15-981a-f85dad13f64b.jpg",
+  "youTubeVideo" : null,
+  "flashVideo" : null,
+  "foodItemTitle" : "Vegetable Raita",
+  "sourceUrl" : "http://www.padhuskitchen.com/2010/09/mixed-vegetable-raita-mixed-vegetable.html"
+}, {
+  "title" : "Boondi Raita",
+  "image" : "images/recipes/6af2cf6a-6795-4e4d-8ac8-371c1ff508a1.jpg",
+  "youTubeVideo" : null,
+  "flashVideo" : null,
+  "foodItemTitle" : "Boondi Raita",
+  "sourceUrl" : "http://www.sanjeevkapoor.com/boondi-raita.aspx"
+}, {
+  "title" : "Boondi Raita",
+  "image" : "images/recipes/07bb5faf-4fb7-4406-8fd1-fef96507b6fd.jpg",
+  "youTubeVideo" : null,
+  "flashVideo" : null,
+  "foodItemTitle" : "Boondi Raita",
+  "sourceUrl" : "http://nishamadhulika.com/en/89-boondi_ka_rayta.html"
+}, {
+  "title" : "Boondi Raita",
+  "image" : "images/recipes/22a2b700-02c2-4302-83bd-80e8cd7d5ee6.jpg",
+  "youTubeVideo" : null,
+  "flashVideo" : null,
+  "foodItemTitle" : "Boondi Raita",
+  "sourceUrl" : "http://redchillies.us/2012/11/13/quick-and-easy-boondi-raita/"
 } ]
