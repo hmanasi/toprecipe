@@ -41,89 +41,89 @@
 }, {
   "title" : "Chinche che saar (Tamarind soup) ",
   "categoryTree" : "Soup",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Chinche che saar (Tamarind soup)",
   "categoryTree" : "Soup",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Sweet Corn Vegetable Soup",
   "categoryTree" : "Soup",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Vegetable Raita",
   "categoryTree" : "Salad/Raita",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Cilantro Mint Raita",
   "categoryTree" : "Salad/Raita",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Aloo Naan",
   "categoryTree" : "Bread->Naan",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Naan",
   "categoryTree" : "Bread->Naan",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Bajre ki roti",
   "categoryTree" : "Bread->Roti",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Phulka roti",
   "categoryTree" : "Bread->Roti",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Rumali roti",
   "categoryTree" : "Bread->Roti",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Aloo Paratha",
   "categoryTree" : "Bread->Paratha",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Laccha Paratha",
   "categoryTree" : "Bread->Paratha",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Bhatura",
   "categoryTree" : "Bread->Others",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Palak Paneer",
   "categoryTree" : "Veggi",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Bharwan Bhindi",
   "categoryTree" : "Veggi",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Vegetable Jalfrezi",
   "categoryTree" : "Veggi",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Maharashtrian Varan",
   "categoryTree" : "Daal",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Surali chi vadi/Khandvi",
   "categoryTree" : "Snack",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Bhel Puri",
   "categoryTree" : "Snack",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Pineapple Shrikhand",
   "categoryTree" : "Dessert",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Gulab Jamun",
   "categoryTree" : "Dessert",
-  "vegetarian" : false
+  "vegetarian" : true
 }, {
   "title" : "Samosa",
   "categoryTree" : "Appetizer",
-  "vegetarian" : false
+  "vegetarian" : true
 } ]
