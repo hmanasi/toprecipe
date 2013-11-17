@@ -126,4 +126,8 @@
   "title" : "Samosa",
   "categoryTree" : "Appetizer",
   "vegetarian" : true
+}, {
+  "title" : "Onion Pakora",
+  "categoryTree" : "Appetizer",
+  "vegetarian" : true
 } ]
