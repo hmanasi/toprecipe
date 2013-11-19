@@ -248,7 +248,6 @@ body {
   background-color: #474480;
 }
 
-
 @media (min-width: 1200px) {
   .container-collapse {
     width: auto;
@@ -288,6 +287,8 @@ a:focus {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
   }
   
-
+.col-md-3 > .thumbnail {
+	margin-bottom: 10px;
+}
   
   
