@@ -68,7 +68,7 @@ public class RecipeRepositoryTest extends AbstractContainerTest {
 
 	@Test
 	public void testFetchRecipesGivenFoodItemIdWhenNoneMatch() {
-		recipeRepo.getRecipeByFoodItemId(2l);
+		recipeRepo.getSortedRecipeByFoodItemId(2l);
 	}
 
 	@Test
@@ -105,7 +105,7 @@ public class RecipeRepositoryTest extends AbstractContainerTest {
 					}
 				});
 
-		List<Recipe> recipes = recipeRepo.getRecipeByFoodItemId(item.getId());
+		List<Recipe> recipes = recipeRepo.getSortedRecipeByFoodItemId(item.getId());
 
 		assertEquals(2, recipes.size());
 		assertEquals("recipe 1", recipes.get(0).getTitle());

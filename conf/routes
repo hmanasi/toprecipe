@@ -14,11 +14,12 @@ POST    /users/                   @com.toprecipe.controllers.Users.createUser()
 # Recipes          
 GET     /recipes                  @com.toprecipe.controllers.Recipes.recipes()
 GET     /recipes/admin            @com.toprecipe.controllers.Recipes.admin()
-#GET    /recipes/new             @com.toprecipe.controllers.Recipes.newRecipe()
+#GET    /recipes/new              @com.toprecipe.controllers.Recipes.newRecipe()
 GET     /recipes/new/:categoryTitle @com.toprecipe.controllers.Recipes.newRecipe(categoryTitle: String)
 POST    /recipes/selectMedia      @com.toprecipe.controllers.Recipes.selectMedia()
 POST    /recipes                  @com.toprecipe.controllers.Recipes.createRecipe()
 POST    /recipes/:id/delete       @com.toprecipe.controllers.Recipes.deleteRecipe(id: Long)
+POST    /recipes/:id/rating/:rating       @com.toprecipe.controllers.Recipes.rateRecipe(id: Long, rating: Float)
 GET     /recipes/fooditem/:fooditem_id @com.toprecipe.controllers.CategoryBrowser.recipes(fooditem_id:Long)
 
 # Other admin actions

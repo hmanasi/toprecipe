@@ -183,4 +183,33 @@ public class RecipeServiceTest extends AbstractContainerTest {
 		assertEquals("Biryani", created.getFoodItem().getCategories().get(0)
 				.getTitle());
 	}
+
+	@Test
+	public void rateRecipe() {
+		final Recipe created = transactionTemplate
+				.execute(new TransactionCallback<Recipe>() {
+
+					@Override
+					public Recipe doInTransaction(TransactionStatus status) {
+						Recipe r = new Recipe();
+						r.setTitle("testRecipeService");
+						try {
+							return inTest.addRecipe(r, null);
+						} catch (IOException e) {
+							return null;
+						}
+					}
+				});
+
+		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+			@Override
+			protected void doInTransactionWithoutResult(TransactionStatus status) {
+				inTest.rateRecipe(created.getId(), 2.5f);
+			}
+		});
+
+		Recipe r = recipeRepo.findOne(created.getId());
+
+		assertEquals(2.5, r.getAverageRating(), 0.00001);
+	}
 }

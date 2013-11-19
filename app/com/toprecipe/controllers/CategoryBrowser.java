@@ -39,15 +39,15 @@ public class CategoryBrowser extends Controller {
 	}
 
 	public Result recipes(Long foodItemId) {
-		List<Recipe> recipes = recipeRepo.getRecipeByFoodItemId(foodItemId);
+		List<Recipe> recipes = recipeRepo.getSortedRecipeByFoodItemId(foodItemId);
 
 		List<List<Recipe>> recipesArray = new ArrayList<>();
 		recipesArray.add(new ArrayList<Recipe>());
-		recipesArray.add(new ArrayList<Recipe>());
 
 		int i = 0;
+		int len = recipesArray.size();
 		for (Recipe recipe : recipes) {
-			recipesArray.get(i % 2).add(recipe);
+			recipesArray.get(i % len).add(recipe);
 			i++;
 		}
 		return ok(views.html.foodItems.recipes.render(recipesArray));

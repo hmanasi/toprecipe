@@ -22,7 +22,7 @@ public class TopRecipeService {
 			+ "FROM Recipe r JOIN r.foodItem f JOIN f.categories c "
 			+ "WHERE c.id = :category_id AND r.id IN "
 			+ " (SELECT max(r1.id) FROM Recipe r1 JOIN r1.foodItem f1 GROUP BY f1.id)";
-
+	
 	public List<TopRecipe> getTopRecipes (String category)
 	{
 		Category c = categoryParser.parseForExistingCategory(category);

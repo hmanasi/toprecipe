@@ -12,9 +12,12 @@ import play.data.Form;
 import play.libs.F.Function;
 import play.libs.F.Function0;
 import play.libs.F.Promise;
+import play.libs.Json;
+import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.toprecipe.beans.RecipeBean;
 import com.toprecipe.models.Recipe;
 import com.toprecipe.repository.RecipeRepository;
@@ -41,19 +44,19 @@ public class Recipes extends Controller {
 		array.add(new ArrayList<Recipe>());
 		array.add(new ArrayList<Recipe>());
 		array.add(new ArrayList<Recipe>());
-		
+
 		Iterator<Recipe> recipes = repo.findAll().iterator();
-		
+
 		int i = 0;
-		
+
 		while (recipes.hasNext()) {
-			array.get(i%4).add(recipes.next());
+			array.get(i % 4).add(recipes.next());
 			i++;
 		}
-		
+
 		return ok(views.html.recipes.index.render(array));
 	}
-	
+
 	public Result admin() {
 		return ok(views.html.recipes.admin.render(repo.findAll()));
 	}
@@ -87,8 +90,6 @@ public class Recipes extends Controller {
 		}
 	}
 
-	
-	
 	private void saveRecipe(RecipeBean recipeForm) throws IOException {
 		Recipe recipe = new Recipe();
 		recipe.setImage(recipeForm.getImage());
@@ -162,5 +163,13 @@ public class Recipes extends Controller {
 						}
 					});
 		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public Result rateRecipe(Long id, Float rating) {
+		ObjectNode result = Json.newObject();
+		recipeService.rateRecipe(id, rating);
+		result.put("status", "OK");
+		return ok(result);
 	}
 }

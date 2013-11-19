@@ -42,6 +42,9 @@ public class Recipe {
 	@JoinColumn(name = "food_item_id")
 	private FoodItem foodItem;
 
+	@Column(name="average_rating")
+	private Float averageRating;
+	
 	public Long getId() {
 		return id;
 	}
@@ -116,5 +119,13 @@ public class Recipe {
 		} else {
 			return getFlashVideo();
 		}
+	}
+
+	public Float getAverageRating() {
+		return averageRating;
+	}
+
+	public void setAverageRating(Float averageRating) {
+		this.averageRating = averageRating;
 	}
 }

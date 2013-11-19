@@ -49,15 +49,15 @@ public class RecipeService {
 		if (StringUtils.isEmpty(recipe.getImage())) {
 			recipe.setImage(null);
 		}
-		
+
 		if (StringUtils.isEmpty(recipe.getYouTubeVideo())) {
 			recipe.setYouTubeVideo(null);
 		}
-		
+
 		if (StringUtils.isEmpty(recipe.getFlashVideo())) {
 			recipe.setFlashVideo(null);
 		}
-		
+
 		if (recipe.getImage() != null) {
 			File permanent = imageFileHelper.makeImagePermanent(recipe
 					.getImage());
@@ -65,5 +65,15 @@ public class RecipeService {
 		}
 
 		return recipeRepository.save(recipe);
+	}
+
+	@Transactional
+	public void rateRecipe(Long recipeId, float rating) {
+		Recipe r = recipeRepository.findOne(recipeId);
+
+		if (r != null) {
+			r.setAverageRating(rating);
+			recipeRepository.save(r);
+		}
 	}
 }
