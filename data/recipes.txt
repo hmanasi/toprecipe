@@ -286,12 +286,12 @@
   "foodItemTitle" : "Butter chicken",
   "sourceUrl" : "http://www.youtube.com/watch?v=0E_1AuGVVfU"
 }, {
-  "title" : "Peas Pulav",
-  "image" : "public/images/recipes/6643c0bd-261e-449b-98c7-6e246bd17824.jpeg",
-  "youTubeVideo" : "http://www.youtube.com/embed/grV9sC5A9wY",
+  "title" : "Chicken Tikka Kabab",
+  "image" : "images/recipes/abd3eee9-c34d-4382-adf4-4e6894836676.jpg",
+  "youTubeVideo" : null,
   "flashVideo" : null,
-  "foodItemTitle" : "Peas Pulav",
-  "sourceUrl" : "http://www.madhurasrecipe.com/veg-rice/Peas-Pulav"
+  "foodItemTitle" : "Chicken Tikka Kabab",
+  "sourceUrl" : "http://www.zeekhanakhazana.com/recipe/chicken-tikka-kebab"
 }, {
   "title" : "Kadhai Chicken",
   "image" : "images/recipes/5bfae748-673a-49f3-b826-2d443c5f8b34.jpg",
@@ -390,4 +390,11 @@
   "flashVideo" : "http://www.youtube.com/v/-BEZhHGsKr4&f=gdata_videos&fs=1&showsearch=0",
   "foodItemTitle" : "Cilantro Mint Raita",
   "sourceUrl" : "http://showmethecurry.com/salad-raita/cilantro-mint-raita.html"
-}]
+}, {
+  "title" : "Egg Curry",
+  "image" : "images/recipes/dc82aa9f-9298-44e3-ad01-2c08624c6f3b.jpg",
+  "youTubeVideo" : "http://www.youtube.com/embed/uEgYR8ylS0Q",
+  "flashVideo" : null,
+  "foodItemTitle" : "Egg Curry",
+  "sourceUrl" : "http://www.madhurasrecipe.com/non-veg-curry/Egg-Curry"
+} ]

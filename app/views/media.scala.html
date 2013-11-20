@@ -9,7 +9,7 @@
 @isVideoRecipe=@{isYouTubeRecipe|isFlashRecipe}
 
 @if(hasImage){
-	<a id="recipe-image-container" href="#" itemId="@id">
+	<a class="recipe-image-container" href="#" itemId="@id">
 		<img class="img-responsive @className" src="@routes.Assets.at(image)">
 	</a>
 }else{

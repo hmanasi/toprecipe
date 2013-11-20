@@ -266,8 +266,6 @@ body {
   
 }
 
-
-
 a:hover,
 a:focus {
   color: #ffffff;
@@ -291,4 +289,10 @@ a:focus {
 	margin-bottom: 10px;
 }
   
-  
+#recipe-info-modal .modal-body {
+	padding-bottom:0px;
+}
+
+.thumbnail.recipe-display {
+    margin-bottom: 10px;
+}

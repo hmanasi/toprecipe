@@ -5,6 +5,28 @@
 
 @scripts = {
     <script src="@routes.Assets.at("javascripts/recipes/index.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/moreinfo.js")" type="text/javascript"></script> 
+    
+    <script type="text/javascript">
+	    var recipes = {
+	    	@for(recipeList <- recipeArrays){
+	    		@for(recipe <- recipeList) {
+	    			@recipe.getId():{
+	    				title:"@recipe.getTitle()",
+	    				image:"@routes.Assets.at(recipe.getImage())",
+	    				youTubeVideo:"@recipe.getYouTubeVideo",
+	    				flashVideo:"@recipe.getFlashVideo", 
+	    				sourceUrl:"@recipe.getSourceUrl",
+	    				@if(recipe.getAverageRating () == null) {
+	    					averageRating:null
+	    				}else{
+	    					averageRating:@String.format("%.2f",recipe.getAverageRating)
+	    				}
+	    			},
+	    		}
+	    	}
+	    };
+    </script>
 }
 
 @main("Recipe list", scripts){
@@ -26,4 +48,6 @@
 		  	</div>
 		}
 	</div>
+
+@moreinfo()  	
 }

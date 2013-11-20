@@ -138,4 +138,8 @@
   "title" : "Boondi Raita",
   "categoryTree" : "Salad/Raita",
   "vegetarian" : true
+}, {
+  "title" : "Chicken Tikka Kabab",
+  "categoryTree" : "Appetizer",
+  "vegetarian" : false
 } ]

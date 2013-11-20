@@ -7,6 +7,7 @@
       
     <h2 class="form-signin-heading">Add new recipe</h2>
     
+   <div class="col-md-6">
    
 	@form(com.toprecipe.controllers.routes.Recipes.selectMedia()) {        
 		@inputText(recipeForm("Title"), 'class -> "form-control", 'placeholder -> "Title")
@@ -16,8 +17,10 @@
     }  
     
     @form(com.toprecipe.controllers.routes.CategoryBrowser.foodItems(recipeForm.get().getCategoryTitle())) {
-       <button class="btn btn-lg btn-primary" type="submit">cancel</button>
+       <button class="btn btn-lg btn-primary" type="submit">Cancel</button>
     }
+    
+    </div>
 }
 
 
